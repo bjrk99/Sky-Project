@@ -4,40 +4,33 @@ canvas.width = innerWidth - 10;
 canvas.height = innerHeight -10;
 
 let frame = 0; // keep track of loops - will help with conditions for what obstacles happen
-let leftArrowPressed = false;
-let rightArrowPressed = true;
 let verticalPosition = canvas.height - 60;
 let horizontalPosition = canvas.width / 2;
 
 function animate(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillRect(horizontalPosition, verticalPosition, 100, 30); // player rectangle --- 10 10 50 50
+    player.draw();
     requestAnimationFrame(animate); // sets up animation loop - recursion
 }
 
 animate();
 
 window.addEventListener('keydown', function(e){
+    console.log(e.code);
     if (e.code === 'ArrowLeft'){
-        // move left
-        leftArrowPressed = true;
-        horizontalPosition -= 10;
+        player.moveLeft();
     }
     else if (e.code === 'ArrowRight'){
-        // move right
-        rightArrowPressed = true;
-        horizontalPosition += 10;
+        player.moveRight();
     }
-})
+});
 
-window.addEventListener('keyup', function(e){
-    if (e.code === 'ArrowLeft'){
-        // stop moving left
-        leftArrowPressed = false;
-    }
-    else if (e.code === 'ArrowRight') {
-        // stop moving right
-        rightArrowPressed = false;
-    }
-})
+//window.addEventListener('keyup', function(e){
+  //  if (e.code === 'ArrowLeft'){
+    //    leftArrowPressed = false;
+    //}
+    //else if (e.code === 'ArrowRight'){
+      //  rightArrowPressed = false;
+    //}
+//});
 
