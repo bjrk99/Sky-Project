@@ -6,7 +6,7 @@ function randSpawnPoint(ySize) {
 
 class Enemy {
     constructor() {
-        this.radius = 30
+        this.radius = Math.random() * (60 - 20) + 20
 
         this.sp = randSpawnPoint(this.radius)
         this.x = this.sp.x
