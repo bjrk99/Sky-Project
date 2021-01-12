@@ -51,12 +51,3 @@ window.addEventListener('keydown', function(e){
     }
 });
 
-//window.addEventListener('keyup', function(e){
-  //  if (e.code === 'ArrowLeft'){
-    //    leftArrowPressed = false;
-    //}
-    //else if (e.code === 'ArrowRight'){
-      //  rightArrowPressed = false;
-    //}
-//});
-
