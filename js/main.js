@@ -27,7 +27,7 @@ function animate(){
         wave.forEach((enemy, inIndex) => {
             dist = player.distanceTo(enemy)
             distBetween = dist - enemy.radius - (player.width / 2)
-            if (distBetween < 0){
+            if (distBetween < 0 && !(player.x < 10 && player.y < 10)) {
                 cancelAnimationFrame(frameID)
             }
 
@@ -46,11 +46,12 @@ function animate(){
 }
 
 function spawnWave() {
-    var amount = Math.random() * (6 - 2) + 2
+    max = player.score < 600 ? 6 : player.score / 100
+    var waveSize = Math.random() * (max - 3) + 3
     var wave = []
     
-    for (i = 0; i < amount; i++){
-        var enemy = new Enemy()
+    for (i = 0; i < waveSize; i++){
+        var enemy = new Enemy(waveSize)
         wave.push(enemy)
     }
     
