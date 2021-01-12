@@ -10,11 +10,19 @@ let horizontalPosition = canvas.width / 2;
 const waves = []
 
 function animate(){
+    let frameID = requestAnimationFrame(animate); // sets up animation loop - recursion
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     player.draw();
 
     waves.forEach((wave, outIndex) => {
         wave.forEach((enemy, inIndex) => {
+            dist = player.distanceTo(enemy)
+            distBetween = dist - enemy.radius
+            if (distBetween < 0){
+                cancelAnimationFrame(frameID)
+            }
+
             if (enemy.y - enemy.radius > canvas.height){
                 setTimeout(() => {
                     wave.splice(inIndex, 1)
@@ -26,8 +34,6 @@ function animate(){
             enemy.update()
         })
     })
-
-    requestAnimationFrame(animate); // sets up animation loop - recursion
 }
 
 function spawnWave() {
