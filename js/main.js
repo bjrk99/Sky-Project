@@ -7,12 +7,38 @@ let frame = 0; // keep track of loops - will help with conditions for what obsta
 let verticalPosition = canvas.height - 60;
 let horizontalPosition = canvas.width / 2;
 
+const waves = []
+
 function animate(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     player.draw();
+
+    waves.forEach(wave => {
+        wave.forEach(enemy => {
+            enemy.update()
+        })
+    })
+
     requestAnimationFrame(animate); // sets up animation loop - recursion
 }
 
+function spawnWave() {
+    var amount = Math.random() * (4 - 1) + 1
+    var wave = []
+    
+    for (i = 0; i < amount; i++){
+        var enemy = new Enemy()
+        wave.push(enemy)
+    }
+    
+    waves.push(wave)
+}
+
+function spawnEnemies() {
+    setInterval(spawnWave, 5000)
+}
+
+spawnEnemies()
 animate();
 
 window.addEventListener('keydown', function(e){
