@@ -6,6 +6,10 @@ canvas.height = innerHeight -10;
 let frame = 0; // keep track of loops - will help with conditions for what obstacles happen
 // let verticalPosition = canvas.height - 60;
 // let horizontalPosition = canvas.width / 2;
+let leftArrowPressed = false;
+let rightArrowPressed = false;
+let upArrowPressed = false;
+let downArrowPressed = false;
 
 const waves = []
 
@@ -13,8 +17,8 @@ function animate(){
     let frameID = requestAnimationFrame(animate); // sets up animation loop - recursion
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    playerMovement();
     player.draw();
-
     waves.forEach((wave, outIndex) => {
         wave.forEach((enemy, inIndex) => {
             dist = player.distanceTo(enemy)
@@ -58,16 +62,68 @@ animate();
 window.addEventListener('keydown', function(e){
     console.log(e.code);
     if (e.code === 'ArrowLeft'){
-        player.moveLeft();
+        // player.moveLeft();
+        leftArrowPressed = true;
     }
     else if (e.code === 'ArrowRight'){
-        player.moveRight();
+        // player.moveRight();
+        rightArrowPressed = true;
     }
     else if (e.code === 'ArrowUp'){
-        player.moveUp();
+        // player.moveUp();
+        upArrowPressed = true;
     }
     else if(e.code === 'ArrowDown'){
-        player.moveDown();
+        // player.moveDown();
+        downArrowPressed = true;
     }
 });
+
+window.addEventListener('keyup', function(e){
+    console.log(e.code);
+    if (e.code === 'ArrowLeft'){
+        leftArrowPressed = false;
+    }
+    else if (e.code === 'ArrowRight'){
+        rightArrowPressed = false;
+    }
+    else if (e.code === 'ArrowUp'){
+        upArrowPressed = false;
+    }
+    else if(e.code === 'ArrowDown'){
+        downArrowPressed = false;
+    }
+});
+
+function playerMovement(){
+    // going to the left
+    if (leftArrowPressed && (!upArrowPressed && !downArrowPressed)){
+        player.moveLeft();
+    }
+    else if (leftArrowPressed && upArrowPressed){
+        player.moveLeft();
+        player.moveUp();
+    }
+    else if (leftArrowPressed && downArrowPressed){
+        player.moveLeft();
+        player.moveDown();
+    } // going to the right
+    else if (rightArrowPressed && (!upArrowPressed && !downArrowPressed)){
+        player.moveRight();
+    }
+    else if (rightArrowPressed && upArrowPressed){
+        player.moveRight();
+        player.moveUp();
+    }
+    else if (rightArrowPressed && downArrowPressed){
+        player.moveRight();
+        player.moveDown();
+    } // going up
+    else if (upArrowPressed){
+        player.moveUp();
+    } // goind down
+    else if (downArrowPressed){
+        player.moveDown();
+    }
+}
 
