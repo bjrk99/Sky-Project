@@ -2,6 +2,9 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d'); // should give built in canvas methods
 canvas.width = innerWidth - 10;
 canvas.height = innerHeight -10;
+ctx.font = "30px Comic Sans MS";
+ctx.fillStyle = "white";
+ctx.textAlign = "center";
 
 let frame = 0; // keep track of loops - will help with conditions for what obstacles happen
 // let verticalPosition = canvas.height - 60;
@@ -19,6 +22,7 @@ function animate(){
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     playerMovement();
     player.draw();
+    ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
     waves.forEach((wave, outIndex) => {
         wave.forEach((enemy, inIndex) => {
             dist = player.distanceTo(enemy)
