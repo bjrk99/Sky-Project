@@ -13,6 +13,7 @@ let leftArrowPressed = false;
 let rightArrowPressed = false;
 let upArrowPressed = false;
 let downArrowPressed = false;
+let startingScreen = true;
 
 const waves = []
 
@@ -22,27 +23,35 @@ function animate(){
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     playerMovement();
     player.draw();
-    ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
-    waves.forEach((wave, outIndex) => {
-        wave.forEach((enemy, inIndex) => {
-            dist = player.distanceTo(enemy)
-            distBetween = dist - enemy.radius - (player.width / 2)
-            if (distBetween < 0 && !(player.x < 10 && player.y < 10)) {
-                cancelAnimationFrame(frameID)
-            }
-
-            if (enemy.y - enemy.radius > canvas.height){
-                setTimeout(() => {
-                    wave.splice(inIndex, 1)
-                    player.addScoreForAvoidedObjects();
-                    if (wave.length == 0){
-                        waves.splice(outIndex, 1)
-                    }
-                }, 0)
-            }
-            enemy.update()
+    // start
+    if (startingScreen){
+        displayStartGame();
+    }
+    else{
+        spawnEnemies();
+        ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
+        waves.forEach((wave, outIndex) => {
+            wave.forEach((enemy, inIndex) => {
+                dist = player.distanceTo(enemy)
+                distBetween = dist - enemy.radius - (player.width / 2)
+                if (distBetween < 0 && !(player.x < 10 && player.y < 10)) {
+                    cancelAnimationFrame(frameID)
+                }
+    
+                if (enemy.y - enemy.radius > canvas.height){
+                    setTimeout(() => {
+                        wave.splice(inIndex, 1)
+                        player.addScoreForAvoidedObjects();
+                        if (wave.length == 0){
+                            waves.splice(outIndex, 1)
+                        }
+                    }, 0)
+                }
+                enemy.update()
+            })
         })
-    })
+    }
+    // end
 }
 
 function spawnWave() {
@@ -70,7 +79,7 @@ function spawnEnemies() {
     timer()
 }
 
-spawnEnemies()
+// spawnEnemies();
 animate();
 
 window.addEventListener('keydown', function(e){
@@ -140,4 +149,20 @@ function playerMovement(){
         player.moveDown();
     }
 }
+
+// displays start of the game
+function displayStartGame(){
+    ctx.font = "60px Comic Sans MS";
+    ctx.fillText("GAME TITLE ", canvas.width / 2, canvas.height / 6);
+    ctx.font = "30px Comic Sans MS";
+    ctx.fillText("PRESS ENTER", canvas.width / 2, canvas.height / 2);
+}
+
+window.addEventListener('keydown', function(e){
+    if (e.code === 'Enter'){
+        if (startingScreen){
+            startingScreen = false;
+        }
+    }
+})
 
