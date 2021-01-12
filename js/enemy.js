@@ -1,6 +1,6 @@
 function randSpawnPoint(ySize) {
     var x = Math.random() * (canvas.width - 100) + 50
-    var y = 0 - ySize
+    var y = 0 - ySize - (Math.random() * ySize * 3)
     return {x: x, y: y}
 }
 
