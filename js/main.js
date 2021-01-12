@@ -42,7 +42,7 @@ function animate(){
 }
 
 function spawnWave() {
-    var amount = Math.random() * (4 - 1) + 1
+    var amount = Math.random() * (6 - 2) + 2
     var wave = []
     
     for (i = 0; i < amount; i++){
@@ -55,7 +55,7 @@ function spawnWave() {
 
 function spawnEnemies() {
     spawnWave()
-    setInterval(spawnWave, 5000)
+    setInterval(spawnWave, 4000)
 }
 
 spawnEnemies()

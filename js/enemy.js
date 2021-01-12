@@ -1,12 +1,12 @@
 function randSpawnPoint(ySize) {
     var x = Math.random() * (canvas.width - 100) + 50
-    var y = 0 - ySize
+    var y = 0 - ySize - (Math.random() * ySize * 3)
     return {x: x, y: y}
 }
 
 class Enemy {
     constructor() {
-        this.radius = 30
+        this.radius = Math.random() * (60 - 20) + 20
 
         this.sp = randSpawnPoint(this.radius)
         this.x = this.sp.x
