@@ -15,8 +15,8 @@ const waves = []
 
 function animate(){
     let frameID = requestAnimationFrame(animate); // sets up animation loop - recursion
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     playerMovement();
     player.draw();
     waves.forEach((wave, outIndex) => {

@@ -13,7 +13,7 @@ class Player {
         this.heightSpeedFactor = innerHeight / 80
     }
     draw(){
-        ctx.fillStyle = 'blue';
+        ctx.fillStyle = 'white';
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
     moveLeft(){
