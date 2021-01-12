@@ -58,8 +58,15 @@ function spawnWave() {
 }
 
 function spawnEnemies() {
-    spawnWave()
-    setInterval(spawnWave, 4000)
+    let interval = 5000
+    timer = () => {
+        if (interval > 1000) {
+            interval -= 200
+        }
+        spawnWave()
+        setTimeout(timer, interval)
+    }
+    timer()
 }
 
 spawnEnemies()
