@@ -20,9 +20,9 @@ function animate(){
     let frameID = requestAnimationFrame(animate); // sets up animation loop - recursion
     ctx.fillStyle = 'rgba(0,0,0,0.5)'
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
     playerMovement();
     player.draw();
+    ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
     waves.forEach((wave, outIndex) => {
         wave.forEach((enemy, inIndex) => {
             dist = player.distanceTo(enemy)
