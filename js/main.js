@@ -30,6 +30,7 @@ function animate(){
             if (enemy.y - enemy.radius > canvas.height){
                 setTimeout(() => {
                     wave.splice(inIndex, 1)
+                    player.addScoreForAvoidedObjects();
                     if (wave.length == 0){
                         waves.splice(outIndex, 1)
                     }
@@ -122,7 +123,7 @@ function playerMovement(){
     } // going up
     else if (upArrowPressed){
         player.moveUp();
-    } // goind down
+    } // going down
     else if (downArrowPressed){
         player.moveDown();
     }

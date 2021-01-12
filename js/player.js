@@ -6,6 +6,7 @@ class Player {
         // this.y = canvas.height - 100;
         this.width = 20;
         this.height = 20;
+        this.score = 0;
 
         console.log(innerHeight, innerWidth)
         this.widthSpeedFactor = innerWidth / 140
@@ -41,6 +42,9 @@ class Player {
             y: this.y + this.height / 2
         }
         return Math.hypot(mid.x - obj.x, mid.y - obj.y)
+    }
+    addScoreForAvoidedObjects(){
+        this.score += 5;
     }
 }
 
