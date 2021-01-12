@@ -6,22 +6,24 @@ class Player {
         // this.y = canvas.height - 100;
         this.width = 20;
         this.height = 20;
+
+        this.speedFactor = innerWidth / 100
     }
     draw(){
         ctx.fillStyle = 'blue';
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
     moveLeft(){
-        this.x -= 5;
+        this.x -= this.speedFactor;
     }
     moveRight(){
-        this.x += 5;
+        this.x += this.speedFactor;
     }
     moveUp(){
-        this.y -= 5;
+        this.y -= this.speedFactor;
     }
     moveDown(){
-        this.y += 5;
+        this.y += this.speedFactor;
     }
     distanceTo(obj) {
         let mid = {
