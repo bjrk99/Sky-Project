@@ -28,7 +28,6 @@ function animate(){
         displayStartGame();
     }
     else{
-        spawnEnemies();
         ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
         waves.forEach((wave, outIndex) => {
             wave.forEach((enemy, inIndex) => {
@@ -79,7 +78,6 @@ function spawnEnemies() {
     timer()
 }
 
-// spawnEnemies();
 animate();
 
 window.addEventListener('keydown', function(e){
@@ -162,6 +160,7 @@ window.addEventListener('keydown', function(e){
     if (e.code === 'Enter'){
         if (startingScreen){
             startingScreen = false;
+            spawnEnemies();
         }
     }
 })
