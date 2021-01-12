@@ -7,23 +7,25 @@ class Player {
         this.width = 20;
         this.height = 20;
 
-        this.speedFactor = innerWidth / 100
+        console.log(innerHeight, innerWidth)
+        this.widthSpeedFactor = innerWidth / 140
+        this.heightSpeedFactor = innerHeight / 80
     }
     draw(){
         ctx.fillStyle = 'blue';
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
     moveLeft(){
-        this.x -= this.speedFactor;
+        this.x -= this.widthSpeedFactor;
     }
     moveRight(){
-        this.x += this.speedFactor;
+        this.x += this.widthSpeedFactor;
     }
     moveUp(){
-        this.y -= this.speedFactor;
+        this.y -= this.heightSpeedFactor;
     }
     moveDown(){
-        this.y += this.speedFactor;
+        this.y += this.heightSpeedFactor;
     }
     distanceTo(obj) {
         let mid = {
