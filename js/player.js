@@ -24,7 +24,11 @@ class Player {
         this.y += 10;
     }
     distanceTo(obj) {
-        return Math.hypot(this.x - obj.x, this.y - obj.y)
+        let mid = {
+            x: this.x + this.width / 2,
+            y: this.y + this.height / 2
+        }
+        return Math.hypot(mid.x - obj.x, mid.y - obj.y)
     }
 }
 
