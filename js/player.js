@@ -8,7 +8,7 @@ class Player {
         this.height = 20;
     }
     draw(){
-        ctx.fillStyle = 'Red';
+        ctx.fillStyle = 'blue';
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
     moveLeft(){
