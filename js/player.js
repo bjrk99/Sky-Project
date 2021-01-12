@@ -12,16 +12,16 @@ class Player {
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
     moveLeft(){
-        this.x -= 10;
+        this.x -= 5;
     }
     moveRight(){
-        this.x += 10;
+        this.x += 5;
     }
     moveUp(){
-        this.y -= 10;
+        this.y -= 5;
     }
     moveDown(){
-        this.y += 10;
+        this.y += 5;
     }
     distanceTo(obj) {
         let mid = {
