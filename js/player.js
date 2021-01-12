@@ -16,16 +16,24 @@ class Player {
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
     moveLeft(){
-        this.x -= this.widthSpeedFactor;
+        if (this.x > 8){
+            this.x -= this.widthSpeedFactor;
+        }
     }
     moveRight(){
-        this.x += this.widthSpeedFactor;
+        if (this.x < (canvas.width - 28)){
+            this.x += this.widthSpeedFactor;
+        }
     }
     moveUp(){
-        this.y -= this.heightSpeedFactor;
+        if (this.y > 8){
+            this.y -= this.heightSpeedFactor;
+        }
     }
     moveDown(){
-        this.y += this.heightSpeedFactor;
+        if (this.y < (canvas.height - 28)){
+            this.y += this.heightSpeedFactor;
+        }
     }
     distanceTo(obj) {
         let mid = {
