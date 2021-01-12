@@ -18,7 +18,7 @@ function animate(){
     waves.forEach((wave, outIndex) => {
         wave.forEach((enemy, inIndex) => {
             dist = player.distanceTo(enemy)
-            distBetween = dist - enemy.radius
+            distBetween = dist - enemy.radius - (player.width / 2)
             if (distBetween < 0){
                 cancelAnimationFrame(frameID)
             }
