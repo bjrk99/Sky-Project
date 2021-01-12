@@ -13,8 +13,16 @@ function animate(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     player.draw();
 
-    waves.forEach(wave => {
-        wave.forEach(enemy => {
+    waves.forEach((wave, outIndex) => {
+        wave.forEach((enemy, inIndex) => {
+            if (enemy.y - enemy.radius > canvas.height){
+                setTimeout(() => {
+                    wave.splice(inIndex, 1)
+                    if (wave.length == 0){
+                        waves.splice(outIndex, 1)
+                    }
+                }, 0)
+            }
             enemy.update()
         })
     })
