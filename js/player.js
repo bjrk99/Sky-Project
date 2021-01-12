@@ -17,6 +17,12 @@ class Player {
     moveRight(){
         this.x += 10;
     }
+    moveUp(){
+        this.y -= 10;
+    }
+    moveDown(){
+        this.y += 10;
+    }
 
     distanceTo(obj) {
         return Math.hypot(this.x - obj.x, this.y - obj.y)

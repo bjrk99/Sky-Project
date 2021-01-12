@@ -4,8 +4,8 @@ canvas.width = innerWidth - 10;
 canvas.height = innerHeight -10;
 
 let frame = 0; // keep track of loops - will help with conditions for what obstacles happen
-let verticalPosition = canvas.height - 60;
-let horizontalPosition = canvas.width / 2;
+// let verticalPosition = canvas.height - 60;
+// let horizontalPosition = canvas.width / 2;
 
 const waves = []
 
@@ -62,6 +62,12 @@ window.addEventListener('keydown', function(e){
     }
     else if (e.code === 'ArrowRight'){
         player.moveRight();
+    }
+    else if (e.code === 'ArrowUp'){
+        player.moveUp();
+    }
+    else if(e.code === 'ArrowDown'){
+        player.moveDown();
     }
 });
 
