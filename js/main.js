@@ -49,6 +49,7 @@ function spawnWave() {
 }
 
 function spawnEnemies() {
+    spawnWave()
     setInterval(spawnWave, 5000)
 }
 
