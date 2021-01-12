@@ -23,6 +23,6 @@ class Enemy {
 
     update() {
         this.draw()
-        this.y = this.y + 0.5
+        this.y = this.y + 1
     }
 }
