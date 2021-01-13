@@ -14,6 +14,8 @@ let rightArrowPressed = false;
 let upArrowPressed = false;
 let downArrowPressed = false;
 let startingScreen = true;
+let mainGamePlayScreen = false;
+let gameOverScreen = false;
 
 const waves = []
 
@@ -27,14 +29,16 @@ function animate(){
     if (startingScreen){
         displayStartGame();
     }
-    else{
-        ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
+    else if (mainGamePlayScreen){
+        // ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
         waves.forEach((wave, outIndex) => {
             wave.forEach((enemy, inIndex) => {
                 dist = player.distanceTo(enemy)
                 distBetween = dist - enemy.radius - (player.width / 2)
                 if (distBetween < 0 && !(player.x < 10 && player.y < 10)) {
-                    cancelAnimationFrame(frameID)
+                    // cancelAnimationFrame(frameID)
+                    mainGamePlayScreen = false;
+                    gameOverScreen = true;
                 }
     
                 if (enemy.y - enemy.radius > canvas.height){
@@ -49,6 +53,11 @@ function animate(){
                 enemy.update()
             })
         })
+        ctx.fillStyle = "white";
+        ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
+    }
+    else if (gameOverScreen){
+        displayGameOver();
     }
     // end
 }
@@ -80,6 +89,7 @@ function spawnEnemies() {
 
 animate();
 
+// addEventListeners
 window.addEventListener('keydown', function(e){
     console.log(e.code);
     if (e.code === 'ArrowLeft'){
@@ -116,6 +126,20 @@ window.addEventListener('keyup', function(e){
     }
 });
 
+window.addEventListener('keydown', function(e){
+    if (e.code === 'Enter'){
+        if (startingScreen){
+            startingScreen = false;
+            mainGamePlayScreen = true;
+            spawnEnemies();
+        }
+        else if (gameOverScreen){
+            window.location.reload();
+        }
+    }
+})
+
+// player movement function
 function playerMovement(){
     // going to the left
     if (leftArrowPressed && (!upArrowPressed && !downArrowPressed)){
@@ -148,20 +172,21 @@ function playerMovement(){
     }
 }
 
-// displays start of the game
+// display start of the game function
 function displayStartGame(){
     ctx.font = "60px Comic Sans MS";
-    ctx.fillText("GAME TITLE ", canvas.width / 2, canvas.height / 6);
+    ctx.fillText("GAME TITLE", canvas.width / 2, canvas.height / 6);
     ctx.font = "30px Comic Sans MS";
     ctx.fillText("PRESS ENTER", canvas.width / 2, canvas.height / 2);
 }
 
-window.addEventListener('keydown', function(e){
-    if (e.code === 'Enter'){
-        if (startingScreen){
-            startingScreen = false;
-            spawnEnemies();
-        }
-    }
-})
-
+// display end of the game function
+function displayGameOver(){
+    ctx.font = "60px Comic Sans MS";
+    ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 6);
+    ctx.font = "30px Comic Sans MS";
+    ctx.fillText("YOUR SCORE: " + player.score, canvas.width / 2, canvas.height / 2);
+    ctx.font = "15px Comic Sans MS";
+    ctx.fillText("PRESS ENTER TO CONTINUE", canvas.width / 2, canvas.height / 1.5);
+    ctx.font = "30px Comic Sans MS";
+}
