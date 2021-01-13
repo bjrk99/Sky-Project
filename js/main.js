@@ -30,7 +30,7 @@ function animate(){
         displayStartGame();
     }
     else if (mainGamePlayScreen){
-        ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
+        // ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
         waves.forEach((wave, outIndex) => {
             wave.forEach((enemy, inIndex) => {
                 dist = player.distanceTo(enemy)
@@ -53,6 +53,8 @@ function animate(){
                 enemy.update()
             })
         })
+        ctx.fillStyle = "white";
+        ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
     }
     else if (gameOverScreen){
         displayGameOver();
