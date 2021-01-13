@@ -1,8 +1,5 @@
 class Collectable {
     constructor() {
-        this.height = 30
-        this.width = 30
-
         this.radius = 10
         this.points = 5
 
@@ -24,10 +21,10 @@ class Collectable {
         ctx.beginPath()
         ctx.translate(this.x, this.y)
         ctx.moveTo(0, 0 - this.radius)
-        
+
         for (i = 0; i < this.points; i++) {
             ctx.rotate(Math.PI / this.points)
-            ctx.lineTo(0, 0 - (this.radius*2))
+            ctx.lineTo(0, 0 - (this.radius * 2))
             ctx.rotate(Math.PI / this.points)
             ctx.lineTo(0, 0 - this.radius)
         }
