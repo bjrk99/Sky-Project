@@ -3,6 +3,9 @@ class Collectable {
         this.height = 30
         this.width = 30
 
+        this.radius = 10
+        this.points = 5
+
         this.sp = this.randSpawnPoint()
         this.x = this.sp.x
         this.y = this.sp.y
@@ -17,8 +20,22 @@ class Collectable {
     }
 
     draw() {
-        ctx.fillStyle = 'white';
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.save()
+        ctx.beginPath()
+        ctx.translate(this.x, this.y)
+        ctx.moveTo(0, 0 - this.radius)
+        
+        for (i = 0; i < this.points; i++) {
+            ctx.rotate(Math.PI / this.points)
+            ctx.lineTo(0, 0 - (this.radius*2))
+            ctx.rotate(Math.PI / this.points)
+            ctx.lineTo(0, 0 - this.radius)
+        }
+        ctx.closePath()
+
+        ctx.fillStyle = 'white'
+        ctx.fill()
+        ctx.restore()
     }
 
     update() {
