@@ -11,7 +11,7 @@ class Collectable {
     randSpawnPoint() {
         let sp = {
             x: Math.random() * (innerWidth - 100) + 50,
-            y: 0 - this.height
+            y: 0 - this.radius
         }
         return sp
     }

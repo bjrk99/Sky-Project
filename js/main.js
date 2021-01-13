@@ -59,7 +59,7 @@ function animate(){
             collectable.update()
 
             dist = player.distanceTo(collectable)
-            distBetween = dist - collectable.width
+            distBetween = dist - collectable.radius - (player.width / 2)
             if (distBetween <= 0){
                 setTimeout(() => {
                     collectables.splice(index, 1)
