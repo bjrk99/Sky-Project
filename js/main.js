@@ -54,7 +54,7 @@ function animate(){
 }
 
 function spawnWave() {
-    max = player.score < 600 ? 6 : player.score / 100
+    max = player.score < innerWidth ? innerWidth / 160 : player.score / 160
     var waveSize = Math.random() * (max - 3) + 3
     var wave = []
     
