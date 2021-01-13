@@ -39,7 +39,6 @@ function animate(){
                     // cancelAnimationFrame(frameID)
                     mainGamePlayScreen = false;
                     gameOverScreen = true;
-                    animate();
                 }
     
                 if (enemy.y - enemy.radius > canvas.height){
@@ -133,7 +132,7 @@ window.addEventListener('keydown', function(e){
             spawnEnemies();
         }
         else if (gameOverScreen){
-            startingScreen = true;
+            window.location.reload();
         }
     }
 })
