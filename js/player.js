@@ -46,6 +46,9 @@ class Player {
     addScoreForAvoidedObjects(){
         this.score += 5;
     }
+    addScoreForCollectable(){
+        this.score += 10
+    }
 }
 
 const player = new Player();

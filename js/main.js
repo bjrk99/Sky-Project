@@ -17,6 +17,7 @@ let startingScreen = true;
 let mainGamePlayScreen = false;
 let gameOverScreen = false;
 
+const collectables = []
 const waves = []
 
 function animate(){
@@ -53,6 +54,19 @@ function animate(){
                 enemy.update()
             })
         })
+
+        collectables.forEach((collectable, index) => {
+            collectable.update()
+
+            dist = player.distanceTo(collectable)
+            distBetween = dist - collectable.width
+            if (distBetween <= 0){
+                setTimeout(() => {
+                    collectables.splice(index, 1)
+                    player.addScoreForCollectable()
+                }, 0)
+            }
+        })
         ctx.fillStyle = "white";
         ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
     }
@@ -85,6 +99,15 @@ function spawnEnemies() {
         setTimeout(timer, interval)
     }
     timer()
+}
+
+function spawnCollectables() {
+    collectableTimer = () => {
+        collectables.push(new Collectable())
+        collectableInterval = Math.random() * (20000 - 5000) + 5000
+        setTimeout(collectableTimer, collectableInterval)
+    }
+    collectableTimer()
 }
 
 animate();
@@ -132,6 +155,7 @@ window.addEventListener('keydown', function(e){
             startingScreen = false;
             mainGamePlayScreen = true;
             spawnEnemies();
+            spawnCollectables()
         }
         else if (gameOverScreen){
             window.location.reload();
