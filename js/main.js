@@ -36,7 +36,10 @@ function animate(){
                 dist = player.distanceTo(enemy)
                 distBetween = dist - enemy.radius - (player.width / 2)
                 if (distBetween < 0 && !(player.x < 10 && player.y < 10)) {
-                    cancelAnimationFrame(frameID)
+                    // cancelAnimationFrame(frameID)
+                    mainGamePlayScreen = false;
+                    gameOverScreen = true;
+                    animate();
                 }
     
                 if (enemy.y - enemy.radius > canvas.height){
@@ -53,7 +56,7 @@ function animate(){
         })
     }
     else if (gameOverScreen){
-        // TODO: Do something
+        displayGameOver();
     }
     // end
 }
@@ -130,7 +133,7 @@ window.addEventListener('keydown', function(e){
             spawnEnemies();
         }
         else if (gameOverScreen){
-            
+            startingScreen = true;
         }
     }
 })
@@ -179,7 +182,10 @@ function displayStartGame(){
 // display end of the game function
 function displayGameOver(){
     ctx.font = "60px Comic Sans MS";
-    ctx.fillText("GAME TITLE", canvas.width / 2, canvas.height / 6);
+    ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 6);
     ctx.font = "30px Comic Sans MS";
-    ctx.fillText("PRESS ENTER", canvas.width / 2, canvas.height / 2);
+    ctx.fillText("YOUR SCORE: " + player.score, canvas.width / 2, canvas.height / 2);
+    ctx.font = "15px Comic Sans MS";
+    ctx.fillText("PRESS ENTER TO CONTINUE", canvas.width / 2, canvas.height / 1.5);
+    ctx.font = "30px Comic Sans MS";
 }
