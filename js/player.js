@@ -47,7 +47,7 @@ class Player {
         this.score += 5;
     }
     addScoreForCollectable(){
-        this.score += 10
+        this.score += 25
     }
 }
 
