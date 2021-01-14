@@ -1,3 +1,15 @@
+function updateCollectables() {
+    collectables.forEach((coll, index) => {
+        coll.update()
+        if (player.collision(coll)){
+            setTimeout(() => {
+                collectables.splice(index, 1)
+                player.addScoreForCollectable()
+            }, 0)
+        }
+    })
+}
+
 function spawnCollectables() {
     const timer = () => {
         collectables.push(new Collectable())
