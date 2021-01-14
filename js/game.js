@@ -22,6 +22,7 @@ class Game {
     }
 
     drawPlayScreen() {
+        updateWalls()
         updateEnemies()
         // updateCollectables()
         updateFuels()

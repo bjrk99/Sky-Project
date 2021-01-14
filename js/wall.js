@@ -38,13 +38,15 @@ class wall {
     }
 }
 
+function updateWalls(){
+    for (let i = 0; i < walls.length; i++){
+        walls[i].update();
+    }
+}
+
 function spawnWall(){
     if (game.playFrame%400 === 0){
         walls.unshift(new wall); // every 400 frames - new wall spawns
-    }
-
-    for (let i = 0; i < walls.length; i++){
-        walls[i].update();
     }
 
     if (walls.length > 10){
