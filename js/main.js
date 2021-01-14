@@ -49,9 +49,7 @@ function animate(){
                             waves.splice(waveIndex, 1)
                         }
 
-                        if (player.fuel > 0){
-                            player.addScoreForAvoidedObjects();
-                        }
+                        player.addScoreForAvoidedObjects();
                     }, 0)
                 }
             })
@@ -84,7 +82,8 @@ function animate(){
         ctx.fillStyle = "white";
         ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
         if (player.fuel <= 0){
-            displayNoFuel();
+            mainGamePlayScreen = false;
+            gameOverScreen = true;
         }
     }
     else if (gameOverScreen){
@@ -141,7 +140,12 @@ function displayStartGame(){
 // display end of the game function
 function displayGameOver(){
     ctx.font = "60px Comic Sans MS";
-    ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 6);
+    if (player.fuel > 0){
+        ctx.fillText("YOU CRASHED - GAME OVER", canvas.width / 2, canvas.height / 6);
+    }
+    else {
+        ctx.fillText("RUN OUT OF FUEL - GAME OVER", canvas.width / 2, canvas.height / 6);
+    }
     ctx.font = "30px Comic Sans MS";
     ctx.fillText("YOUR SCORE: " + player.score, canvas.width / 2, canvas.height / 2);
     ctx.font = "15px Comic Sans MS";
