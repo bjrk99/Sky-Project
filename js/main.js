@@ -96,16 +96,6 @@ function checkForWallCollision(){
     }
 }
 
-function spawnFuel() {
-    fuelTimer = () => {
-        console.log('fuel spawned')
-        currentFuel = new Fuel()
-        let fuelInterval = Math.random() * (30000 - 10000) + 10000
-        setTimeout(fuelTimer, fuelInterval)
-    }
-    fuelTimer()
-}
-
 animate();
 
 // addEventListeners

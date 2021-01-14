@@ -1,3 +1,12 @@
+function spawnFuel() {
+    const timer = () => {
+        currentFuel = new Fuel()
+        let interval = Math.random() * (30000 - 10000) + 10000
+        setTimeout(fuelTimer, fuelInterval)
+    }
+    timer()
+}
+
 class Fuel {
     constructor() {
         this.height = 30
