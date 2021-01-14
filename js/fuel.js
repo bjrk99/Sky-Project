@@ -1,3 +1,13 @@
+function updateFuels() {
+    fuels.forEach((fuel, index) => {
+        fuel.update()
+        if (player.collision(fuel)) {
+            fuels.splice(index, 1)
+            player.refuel()
+        }
+    })
+}
+
 function spawnFuel() {
     const timer = () => {
         fuels.push(new Fuel())
