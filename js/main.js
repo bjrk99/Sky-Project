@@ -35,10 +35,7 @@ function animate(){
         // ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
         waves.forEach((wave, outIndex) => {
             wave.forEach((enemy, inIndex) => {
-                dist = player.distanceTo(enemy)
-                distBetween = dist - enemy.radius - (player.width / 2)
-                if (distBetween < 0 && !(player.x < 10 && player.y < 10)) {
-                    // cancelAnimationFrame(frameID)
+                if (player.collision(enemy)) {
                     mainGamePlayScreen = false;
                     gameOverScreen = true;
                 }
@@ -58,7 +55,7 @@ function animate(){
 
         collectables.forEach((coll, index) => {
             coll.update()
-            if (coll.collision()){
+            if (player.collision(coll)){
                 setTimeout(() => {
                     collectables.splice(index, 1)
                     player.addScoreForCollectable()
@@ -71,7 +68,7 @@ function animate(){
 
         if(currentFuel.show){
             currentFuel.update()
-            if (player.distanceToMid(currentFuel) - player.width <= 0){
+            if (player.collision(currentFuel)){
                 player.fuel += 500
                 currentFuel.show = false
             }

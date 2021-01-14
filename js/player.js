@@ -48,6 +48,17 @@ class Player {
         }
         return Math.hypot(mid.x - obj.x, mid.y - obj.y)
     }
+
+    collision(obj) {
+        if (obj.radius == null){
+            obj.radius = obj.width / 2
+        }
+
+        const dist = this.distanceTo(obj)
+        const distBet = dist - obj.radius - (player.width / 2)
+        return distBet <= 0
+    }
+
     distanceToMid(obj) {
         let mid = {
             x: this.x + this.width / 2,
