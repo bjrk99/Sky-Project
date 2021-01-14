@@ -19,6 +19,11 @@ class Player {
         ctx.fillRect(innerWidth - 50, canvas.height - (this.fuel / 10), 50, this.fuel / 10)
     }
 
+    drawScore() {
+        ctx.fillStyle = "white";
+        ctx.fillText("SCORE: " + player.score, canvas.width/2, canvas.height/10);
+    }
+
     addScore(score){
         this.score += score;
     }

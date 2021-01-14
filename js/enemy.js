@@ -13,7 +13,7 @@ function spawnWave() {
 }
 
 function spawnEnemies() {
-    if (frame % 400 == 0) {
+    if (game.playFrame % 400 == 0) {
         spawnWave()
     }
 }
@@ -32,8 +32,7 @@ function updateEnemies() {
         wave.forEach((enemy, enemyIndex) => {
             enemy.update()
             if (player.collision(enemy)) {
-                mainGamePlayScreen = false;
-                gameOverScreen = true;
+                game.state = STATE.end
             }
 
             if (offScreen(enemy)) {
@@ -44,7 +43,7 @@ function updateEnemies() {
                         waves.splice(waveIndex, 1)
                     }
 
-                    player.addScoreForAvoidedObjects();
+                    player.addScore(1);
                 }, 0)
             }
         })

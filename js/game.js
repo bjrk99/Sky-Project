@@ -22,17 +22,19 @@ class Game {
     }
 
     drawPlayScreen() {
-        // updateEnemies()
+        updateEnemies()
         // updateCollectables()
         updateFuels()
     
         player.draw()
         player.drawFuelGauge()
+        player.drawScore()
     }
 
     frameLogic() {
         this.playFrame++
 
+        spawnEnemies()
         spawnWall()
         checkForWallCollision()
 
