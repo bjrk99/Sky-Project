@@ -1,3 +1,8 @@
+let leftArrowPressed = false;
+let rightArrowPressed = false;
+let upArrowPressed = false;
+let downArrowPressed = false;
+
 function enterHandler() {
     if (startingScreen) {
         startingScreen = false;

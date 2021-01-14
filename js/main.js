@@ -9,10 +9,7 @@ ctx.textAlign = "center";
 let frame = 0; // keep track of loops - will help with conditions for what obstacles happen
 // let verticalPosition = canvas.height - 60;
 // let horizontalPosition = canvas.width / 2;
-let leftArrowPressed = false;
-let rightArrowPressed = false;
-let upArrowPressed = false;
-let downArrowPressed = false;
+
 let startingScreen = true;
 let mainGamePlayScreen = false;
 let gameOverScreen = false;
@@ -33,23 +30,25 @@ function animate(){
     }
     else if (mainGamePlayScreen){
         // ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
-        waves.forEach((wave, outIndex) => {
-            wave.forEach((enemy, inIndex) => {
+        waves.forEach((wave, waveIndex) => {
+            wave.forEach((enemy, enemyIndex) => {
+                enemy.update()
                 if (player.collision(enemy)) {
                     mainGamePlayScreen = false;
                     gameOverScreen = true;
                 }
-    
-                if (enemy.y - enemy.radius > canvas.height){
+
+                if (offScreen(enemy)) {
                     setTimeout(() => {
-                        wave.splice(inIndex, 1)
-                        player.addScoreForAvoidedObjects();
-                        if (wave.length == 0){
-                            waves.splice(outIndex, 1)
+                        wave.splice(enemyIndex, 1)
+
+                        if (wave.length == 0) {
+                            waves.splice(waveIndex, 1)
                         }
+
+                        player.addScoreForAvoidedObjects();
                     }, 0)
                 }
-                enemy.update()
             })
         })
 
@@ -88,6 +87,16 @@ function animate(){
         displayGameOver();
     }
     // end
+}
+
+function offScreen(obj) {
+    let height = obj.height
+
+    if (height == null) {
+        height = obj.radius
+    }
+
+    return obj.y - height > canvas.height
 }
 
 function checkForWallCollision(){
