@@ -61,7 +61,7 @@ class Player {
         this.y = innerHeight - 100;
 
         this.score = 0;
-        this.fuel = 500
+        this.fuel = 2000
     }
 
     moveLeft(){
