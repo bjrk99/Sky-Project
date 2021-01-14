@@ -26,6 +26,7 @@ function animate(){
     ctx.fillStyle = 'white'
     if (startingScreen){
         displayStartGame();
+        console.log('test')
     }
     else if (mainGamePlayScreen){
         spawnEnemies()
