@@ -7,6 +7,7 @@ class Player {
         this.width = 20;
         this.height = 20;
         this.score = 0;
+        this.fuel = 2500
 
         console.log(innerHeight, innerWidth)
         this.widthSpeedFactor = innerWidth / 140
@@ -15,6 +16,10 @@ class Player {
     draw(){
         ctx.fillStyle = 'white';
         ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+    drawFuel(){
+        ctx.fillStyle = 'green'
+        ctx.fillRect(innerWidth - 50, innerHeight - (this.fuel / 10), 50, this.fuel / 10)
     }
     moveLeft(){
         if (this.x > 8){

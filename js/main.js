@@ -32,6 +32,7 @@ function animate(){
     }
     else if (mainGamePlayScreen){
         // ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
+        player.drawFuel()
         waves.forEach((wave, outIndex) => {
             wave.forEach((enemy, inIndex) => {
                 dist = player.distanceTo(enemy)
@@ -67,6 +68,9 @@ function animate(){
                 }, 0)
             }
         })
+        
+        player.fuel-=1
+
         spawnWall();
         frame++;
         ctx.fillStyle = "white";
@@ -79,7 +83,7 @@ function animate(){
 }
 
 function spawnWave() {
-    max = player.score < innerWidth ? innerWidth / 160 : player.score / 160
+    max = innerWidth / 160
     var waveSize = Math.random() * (max - 3) + 3
     var wave = []
     
@@ -167,7 +171,7 @@ window.addEventListener('keydown', function(e){
 
 // player movement function
 function playerMovement(){
-    if (startingScreen || gameOverScreen) {
+    if (startingScreen || gameOverScreen || player.fuel <= 0) {
         return
     }
 
