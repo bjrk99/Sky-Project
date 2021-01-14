@@ -56,12 +56,9 @@ function animate(){
             })
         })
 
-        collectables.forEach((collectable, index) => {
-            collectable.update()
-
-            dist = player.distanceTo(collectable)
-            distBetween = dist - collectable.radius - (player.width / 2)
-            if (distBetween <= 0){
+        collectables.forEach((coll, index) => {
+            coll.update()
+            if (coll.collision()){
                 setTimeout(() => {
                     collectables.splice(index, 1)
                     player.addScoreForCollectable()

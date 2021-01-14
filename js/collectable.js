@@ -39,4 +39,10 @@ class Collectable {
         this.draw()
         this.y += 5
     }
+
+    collision() {
+        const dist = player.distanceTo(this)
+        const distBet = dist - this.radius - (player.width / 2)
+        return distBet <= 0
+    }
 }
