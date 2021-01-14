@@ -8,6 +8,7 @@ const collectables = []
 const waves = []
 const fuels = []
 
+const player = new Player();
 const game = new Game()
 
 function animate() {
