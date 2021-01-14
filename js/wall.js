@@ -14,13 +14,13 @@ class wall {
         ctx.fillRect(canvas.width - this.right, this.y, this.right, this.width); // right wall
     }
     update(){
-        this.y += 3; // speed how fast moves
+        this.y += 1; // speed how fast moves
         this.draw();
     }
 }
 
 function spawnWall(){
-    if (frame%200 === 0){
+    if (frame%450 === 0){
         wallArray.unshift(new wall); // every 200 frames - new wall spawns
     }
 
