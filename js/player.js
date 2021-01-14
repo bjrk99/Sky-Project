@@ -7,7 +7,7 @@ class Player {
         this.width = 20;
         this.height = 20;
         this.score = 0;
-        this.fuel = 2500
+        this.fuel = 2000
 
         console.log(innerHeight, innerWidth)
         this.widthSpeedFactor = innerWidth / 140
