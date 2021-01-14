@@ -10,7 +10,7 @@ class wall {
     }
     draw(){
         ctx.fillStyle = this.color;
-        ctx.fillRect(0, this.y, this.width, this.left); // left wall AHHHH WHAT THE HELL???
+        ctx.fillRect(0, this.y, this.left, this.width); // left wall
         ctx.fillRect(canvas.width - this.right, this.y, this.right, this.width); // right wall
     }
     update(){
