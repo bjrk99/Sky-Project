@@ -28,7 +28,7 @@ function spawnWall(){
         wallArray[i].update();
     }
 
-    if (wallArray.length > 30){
-        wallArray.pop(wallArray[0]);  // clean up resources
+    if (wallArray.length > 10){
+        wallArray.pop();  // clean up resources
     }
 }
