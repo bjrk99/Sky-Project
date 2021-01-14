@@ -33,25 +33,27 @@ function animate(){
     }
     else if (mainGamePlayScreen){
         // ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
-        waves.forEach((wave, outIndex) => {
-            wave.forEach((enemy, inIndex) => {
+        waves.forEach((wave, waveIndex) => {
+            wave.forEach((enemy, enemyIndex) => {
+                enemy.update()
                 if (player.collision(enemy)) {
                     mainGamePlayScreen = false;
                     gameOverScreen = true;
                 }
-    
-                if (enemy.y - enemy.radius > canvas.height){
+
+                if (offScreen(enemy)) {
                     setTimeout(() => {
-                        wave.splice(inIndex, 1)
+                        wave.splice(enemyIndex, 1)
+
+                        if (wave.length == 0) {
+                            waves.splice(waveIndex, 1)
+                        }
+
                         if (player.fuel > 0){
                             player.addScoreForAvoidedObjects();
                         }
-                        if (wave.length == 0){
-                            waves.splice(outIndex, 1)
-                        }
                     }, 0)
                 }
-                enemy.update()
             })
         })
 
@@ -89,6 +91,16 @@ function animate(){
         displayGameOver();
     }
     // end
+}
+
+function offScreen(obj) {
+    let height = obj.height
+
+    if (height == null) {
+        height = obj.radius
+    }
+
+    return obj.y - height > canvas.height
 }
 
 function checkForWallCollision(){
