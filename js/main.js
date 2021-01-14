@@ -67,6 +67,8 @@ function animate(){
                 }, 0)
             }
         })
+        spawnWall();
+        frame++;
         ctx.fillStyle = "white";
         ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
     }
