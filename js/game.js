@@ -7,6 +7,8 @@ const STATE = {
 class Game {
     constructor() {
         this.frame = -1
+        this.playFrame = -1
+
         this.state = STATE.start
     }
 
@@ -29,6 +31,11 @@ class Game {
     }
 
     frameLogic() {
+        this.playFrame++
+
+        spawnWall()
+        checkForWallCollision()
+
         playerMovement()
         player.fuel -= 1
         if (player.fuel <= 0) {
