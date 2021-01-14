@@ -1,3 +1,25 @@
+function spawnWave() {
+    const max = innerWidth / 160
+    const waveSize = Math.random() * (max - 3) + 3
+    const wave = []
+    
+    for (i = 0; i < waveSize; i++){
+        const enemy = new Enemy(waveSize)
+        wave.push(enemy)
+    }
+    
+    waves.push(wave)
+}
+
+function spawnEnemies() {
+    let interval = 5000
+    const timer = () => {
+        spawnWave()
+        setTimeout(timer, interval)
+    }
+    timer()
+}
+
 function randColour() {
     const r = Math.random() * (255 - 30) + 30
     const g = Math.random() * (255 - 30) + 30

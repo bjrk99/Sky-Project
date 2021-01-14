@@ -35,10 +35,7 @@ function animate(){
         // ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
         waves.forEach((wave, outIndex) => {
             wave.forEach((enemy, inIndex) => {
-                dist = player.distanceTo(enemy)
-                distBetween = dist - enemy.radius - (player.width / 2)
-                if (distBetween < 0 && !(player.x < 10 && player.y < 10)) {
-                    // cancelAnimationFrame(frameID)
+                if (player.collision(enemy)) {
                     mainGamePlayScreen = false;
                     gameOverScreen = true;
                 }
@@ -56,12 +53,9 @@ function animate(){
             })
         })
 
-        collectables.forEach((collectable, index) => {
-            collectable.update()
-
-            dist = player.distanceTo(collectable)
-            distBetween = dist - collectable.radius - (player.width / 2)
-            if (distBetween <= 0){
+        collectables.forEach((coll, index) => {
+            coll.update()
+            if (player.collision(coll)){
                 setTimeout(() => {
                     collectables.splice(index, 1)
                     player.addScoreForCollectable()
@@ -74,7 +68,7 @@ function animate(){
 
         if(currentFuel.show){
             currentFuel.update()
-            if (player.distanceToMid(currentFuel) - player.width <= 0){
+            if (player.collision(currentFuel)){
                 player.fuel += 500
                 currentFuel.show = false
             }
@@ -100,31 +94,6 @@ function checkForWallCollision(){
             return true;
         }
     }
-}
-
-function spawnWave() {
-    max = innerWidth / 160
-    var waveSize = Math.random() * (max - 3) + 3
-    var wave = []
-    
-    for (i = 0; i < waveSize; i++){
-        var enemy = new Enemy(waveSize)
-        wave.push(enemy)
-    }
-    
-    waves.push(wave)
-}
-
-function spawnEnemies() {
-    let interval = 5000
-    timer = () => {
-        // if (interval > 1000) {
-        //     interval -= 200
-        // }
-        spawnWave()
-        setTimeout(timer, interval)
-    }
-    timer()
 }
 
 function spawnCollectables() {

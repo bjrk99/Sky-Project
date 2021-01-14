@@ -42,25 +42,31 @@ class Player {
         }
     }
     distanceTo(obj) {
-        let mid = {
+        if (obj.radius == null){
+            obj = {
+                x: obj.x + obj.width / 2,
+                y: obj.y + obj.height / 2
+            }
+        }
+
+        const mid = {
             x: this.x + this.width / 2,
             y: this.y + this.height / 2
         }
         return Math.hypot(mid.x - obj.x, mid.y - obj.y)
     }
-    distanceToMid(obj) {
-        let mid = {
-            x: this.x + this.width / 2,
-            y: this.y + this.height / 2
+
+    collision(obj) {
+        const dist = this.distanceTo(obj)
+        let radius = obj.radius
+
+        if (radius == null){
+            radius = obj.width / 2
         }
 
-        let objMid = {
-            x: obj.x + obj.width / 2,
-            y: obj.y + obj.height / 2
-        }
-
-        return Math.hypot(mid.x - objMid.x, mid.y - objMid.y)
+        return dist - radius - (player.width / 2) <= 0
     }
+    
     addScoreForAvoidedObjects(){
         this.score += 5;
     }
