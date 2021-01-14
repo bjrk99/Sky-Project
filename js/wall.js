@@ -4,22 +4,18 @@ function checkForWallCollision(){
     for (let i = 0; i < wallArray.length; i++){
         if (player.y < wallArray[i].y + wallArray[i].height && player.y > wallArray[i].y){
             if (player.x < wallArray[i].leftSide){
-                mainGamePlayScreen = false;
-                gameOverScreen = true;
+                game.state = STATE.end
             }
             else if (player.x + player.width > (canvas.width - wallArray[i].rightSide)){
-                mainGamePlayScreen = false;
-                gameOverScreen = true;
+                game.state = STATE.end
             }
         }
         else if (player.y + player.height < wallArray[i].y + wallArray[i].height && player.y + player.height > wallArray[i].y){
             if (player.x < wallArray[i].leftSide){
-                mainGamePlayScreen = false;
-                gameOverScreen = true;
+                game.state = STATE.end
             }
             else if (player.x + player.width > (canvas.width - wallArray[i].rightSide)){
-                mainGamePlayScreen = false;
-                gameOverScreen = true;
+                game.state = STATE.end
             }
         }
     }
@@ -45,7 +41,7 @@ class wall {
 }
 
 function spawnWall(){
-    if (frame%400 === 0){
+    if (game.playFrame%400 === 0){
         wallArray.unshift(new wall); // every 400 frames - new wall spawns
     }
 
