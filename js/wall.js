@@ -1,20 +1,18 @@
-const wallArray = [];
-
 function checkForWallCollision(){
-    for (let i = 0; i < wallArray.length; i++){
-        if (player.y < wallArray[i].y + wallArray[i].height && player.y > wallArray[i].y){
-            if (player.x < wallArray[i].leftSide){
+    for (let i = 0; i < walls.length; i++){
+        if (player.y < walls[i].y + walls[i].height && player.y > walls[i].y){
+            if (player.x < walls[i].leftSide){
                 game.state = STATE.end
             }
-            else if (player.x + player.width > (canvas.width - wallArray[i].rightSide)){
+            else if (player.x + player.width > (canvas.width - walls[i].rightSide)){
                 game.state = STATE.end
             }
         }
-        else if (player.y + player.height < wallArray[i].y + wallArray[i].height && player.y + player.height > wallArray[i].y){
-            if (player.x < wallArray[i].leftSide){
+        else if (player.y + player.height < walls[i].y + walls[i].height && player.y + player.height > walls[i].y){
+            if (player.x < walls[i].leftSide){
                 game.state = STATE.end
             }
-            else if (player.x + player.width > (canvas.width - wallArray[i].rightSide)){
+            else if (player.x + player.width > (canvas.width - walls[i].rightSide)){
                 game.state = STATE.end
             }
         }
@@ -42,14 +40,14 @@ class wall {
 
 function spawnWall(){
     if (game.playFrame%400 === 0){
-        wallArray.unshift(new wall); // every 400 frames - new wall spawns
+        walls.unshift(new wall); // every 400 frames - new wall spawns
     }
 
-    for (let i = 0; i < wallArray.length; i++){
-        wallArray[i].update();
+    for (let i = 0; i < walls.length; i++){
+        walls[i].update();
     }
 
-    if (wallArray.length > 10){
-        wallArray.pop();  // clean up resources
+    if (walls.length > 10){
+        walls.pop();  // clean up resources
     }
 }

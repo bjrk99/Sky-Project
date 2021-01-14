@@ -4,8 +4,9 @@ const ctx = canvas.getContext('2d');
 canvas.width = innerWidth - 10;
 canvas.height = innerHeight - 10;
 
-const collectables = []
+const walls = [];
 const waves = []
+const collectables = []
 const fuels = []
 
 const player = new Player();
