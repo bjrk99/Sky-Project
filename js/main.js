@@ -75,7 +75,7 @@ function animate(){
         }
 
         spawnWall();
-        gameOverScreen = checkForWallCollision();
+        checkForWallCollision();
         frame++;
         ctx.fillStyle = "white";
         ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
@@ -88,11 +88,16 @@ function animate(){
 
 function checkForWallCollision(){
     for (let i = 0; i < wallArray.length; i++){
-        if ((player.y + player.height < wallArray[i].y + wallArray[i].height && player.y + player.height > wallArray[i].y) && // check if player is in y coordinates of the wall
-        ((player.x < wallArray[i].leftSide) || (player.x > wallArray[i].rightSide))){ // checks if less than less side width or more than right hand side width
-            mainGamePlayScreen = false;
-            return true;
-        }
+        if (player.y + player.height < wallArray[i].y + wallArray[i].height && player.y + player.height > wallArray[i].y){
+            if (player.x < wallArray[i].leftSide){
+                mainGamePlayScreen = false;
+                gameOverScreen = true;
+            }
+            else if (player.x > (canvas.width - wallArray[i].rightSide)){
+                mainGamePlayScreen = false;
+                gameOverScreen = true;
+            }
+        } 
     }
 }
 
