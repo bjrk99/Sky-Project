@@ -28,6 +28,13 @@ function animate(){
         displayStartGame();
     }
     else if (mainGamePlayScreen){
+<<<<<<< Updated upstream
+=======
+        spawnWall();
+        spawnEnemies()
+        checkForWallCollision();
+
+>>>>>>> Stashed changes
         waves.forEach((wave, waveIndex) => {
             wave.forEach((enemy, enemyIndex) => {
                 enemy.update()

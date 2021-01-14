@@ -1,6 +1,7 @@
 function spawnWave() {
-    const max = innerWidth / 160
-    const waveSize = Math.random() * (max - 3) + 3
+    const min = innerWidth / 300
+    const max = innerWidth / 120
+    const waveSize = Math.random() * (max - min) + min
     const wave = []
     
     for (i = 0; i < waveSize; i++){
@@ -12,13 +13,19 @@ function spawnWave() {
 }
 
 function spawnEnemies() {
-    let interval = 5000
-    const timer = () => {
+    if (frame % 400 == 0) {
         spawnWave()
-        setTimeout(timer, interval)
     }
-    timer()
 }
+
+// function spawnEnemies() {
+//     let interval = 5000
+//     const timer = () => {
+//         spawnWave()
+//         setTimeout(timer, interval)
+//     }
+//     timer()
+// }
 
 function randColour() {
     const r = Math.random() * (255 - 30) + 30
@@ -54,7 +61,7 @@ class Enemy {
 
     randSpawnPoint(waveSize) {
         var x = Math.random() * (canvas.width - 100) + 50
-        var randY = Math.random() * this.radius * waveSize
-        return {x: x, y: 0 - this.radius - randY}
+        var randY = Math.random() * 300
+        return {x: x, y: -20 - this.radius - randY}
     }
 }
