@@ -1,18 +1,10 @@
 const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d'); // should give built in canvas methods
+const ctx = canvas.getContext('2d');
+
 canvas.width = innerWidth - 10;
 canvas.height = innerHeight -10;
-ctx.font = "30px Comic Sans MS";
-ctx.fillStyle = "white";
-ctx.textAlign = "center";
 
-let frame = 0; // keep track of loops - will help with conditions for what obstacles happen
-// let verticalPosition = canvas.height - 60;
-// let horizontalPosition = canvas.width / 2;
-
-let startingScreen = true;
-let mainGamePlayScreen = false;
-let gameOverScreen = false;
+let frame = 0;
 
 const collectables = []
 const waves = []
@@ -82,3 +74,7 @@ function offScreen(obj) {
 }
 
 animate();
+
+// ctx.font = "30px Comic Sans MS";
+// ctx.fillStyle = "white";
+// ctx.textAlign = "center";

@@ -1,10 +1,17 @@
+STATES = {
+    start: 0, 
+    play: 1, 
+    end: 2
+}
+
+
 class Game {
     constructor() {
-
+        this.state = STATES.start
     }
 
     start() {
-        
+
     }
 
     drawStartScreen() {
