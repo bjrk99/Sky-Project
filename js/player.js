@@ -42,7 +42,14 @@ class Player {
         }
     }
     distanceTo(obj) {
-        let mid = {
+        if (obj.radius == null){
+            obj = {
+                x: obj.x + obj.width / 2,
+                y: obj.y + obj.height / 2
+            }
+        }
+
+        const mid = {
             x: this.x + this.width / 2,
             y: this.y + this.height / 2
         }
@@ -50,28 +57,16 @@ class Player {
     }
 
     collision(obj) {
-        if (obj.radius == null){
-            obj.radius = obj.width / 2
-        }
-
         const dist = this.distanceTo(obj)
-        const distBet = dist - obj.radius - (player.width / 2)
-        return distBet <= 0
-    }
+        let radius = obj.radius
 
-    distanceToMid(obj) {
-        let mid = {
-            x: this.x + this.width / 2,
-            y: this.y + this.height / 2
+        if (radius == null){
+            radius = obj.width / 2
         }
 
-        let objMid = {
-            x: obj.x + obj.width / 2,
-            y: obj.y + obj.height / 2
-        }
-
-        return Math.hypot(mid.x - objMid.x, mid.y - objMid.y)
+        return dist - radius - (player.width / 2) <= 0
     }
+    
     addScoreForAvoidedObjects(){
         this.score += 5;
     }
