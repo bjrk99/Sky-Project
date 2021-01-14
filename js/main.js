@@ -88,7 +88,7 @@ function animate(){
 
 function checkForWallCollision(){
     for (let i = 0; i < wallArray.length; i++){
-        if (player.y + player.height < wallArray[i].y + wallArray[i].height && player.y + player.height > wallArray[i].y){
+        if (player.y < wallArray[i].y + wallArray[i].height && player.y > wallArray[i].y){
             if (player.x < wallArray[i].leftSide){
                 mainGamePlayScreen = false;
                 gameOverScreen = true;
@@ -97,7 +97,17 @@ function checkForWallCollision(){
                 mainGamePlayScreen = false;
                 gameOverScreen = true;
             }
-        } 
+        }
+        else if (player.y + player.height < wallArray[i].y + wallArray[i].height && player.y + player.height > wallArray[i].y){
+            if (player.x < wallArray[i].leftSide){
+                mainGamePlayScreen = false;
+                gameOverScreen = true;
+            }
+            else if (player.x > (canvas.width - wallArray[i].rightSide)){
+                mainGamePlayScreen = false;
+                gameOverScreen = true;
+            }
+        }
     }
 }
 
