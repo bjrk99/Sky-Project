@@ -24,7 +24,7 @@ class Game {
     drawPlayScreen() {
         // updateEnemies()
         // updateCollectables()
-        // updateFuels()
+        updateFuels()
     
         player.draw()
         player.drawFuelGauge()
@@ -61,5 +61,6 @@ class Game {
 
     initialise() {
         player.initialise()
+        spawnFuel()
     }
 }
