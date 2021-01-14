@@ -16,20 +16,18 @@ let gameOverScreen = false;
 
 const collectables = []
 const waves = []
-let currentFuel
+const fuels = []
 
 function animate(){
     let frameID = requestAnimationFrame(animate); // sets up animation loop - recursion
     ctx.fillStyle = 'rgba(0,0,0,0.5)'
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    playerMovement();
-    player.draw();
     // start
+    ctx.fillStyle = 'white'
     if (startingScreen){
         displayStartGame();
     }
     else if (mainGamePlayScreen){
-        // ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
         waves.forEach((wave, waveIndex) => {
             wave.forEach((enemy, enemyIndex) => {
                 enemy.update()
@@ -62,16 +60,19 @@ function animate(){
             }
         })
         
-        player.drawFuel()
-        player.fuel-=1
-
-        if(currentFuel.show){
-            currentFuel.update()
-            if (player.collision(currentFuel)){
+        fuels.forEach((fuel, index) => {
+            fuel.update()
+            if (player.collision(fuel)) {
+                fuels.splice(index, 1)
                 player.fuel += 500
-                currentFuel.show = false
             }
-        }
+        })
+
+        player.draw();
+        player.drawFuelGauge()
+        playerMovement();
+
+        player.fuel-=1
 
         spawnWall();
         checkForWallCollision();

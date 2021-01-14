@@ -17,7 +17,7 @@ class Player {
         ctx.fillStyle = 'white';
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
-    drawFuel(){
+    drawFuelGauge(){
         ctx.fillStyle = 'green'
         ctx.fillRect(innerWidth - 50, innerHeight - (this.fuel / 10), 50, this.fuel / 10)
     }
@@ -66,7 +66,7 @@ class Player {
 
         return dist - radius - (player.width / 2) <= 0
     }
-    
+
     addScoreForAvoidedObjects(){
         this.score += 5;
     }
