@@ -167,6 +167,10 @@ window.addEventListener('keydown', function(e){
 
 // player movement function
 function playerMovement(){
+    if (startingScreen || gameOverScreen) {
+        return
+    }
+
     // going to the left
     if (leftArrowPressed && (!upArrowPressed && !downArrowPressed)){
         player.moveLeft();
