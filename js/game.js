@@ -1,10 +1,8 @@
 const STATE = {
     start: 0, 
     play: 1, 
-    end: 2,
-    quit: 3
+    end: 2
 }
-
 
 class Game {
     constructor() {
@@ -12,15 +10,22 @@ class Game {
         this.state = STATE.start
     }
 
-    start() {
-
-    }
-
     drawStartScreen() {
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
         ctx.font = "60px Comic Sans MS";
         ctx.fillText("GAME TITLE", canvas.width / 2, canvas.height / 6);
         ctx.font = "30px Comic Sans MS";
         ctx.fillText("PRESS ENTER", canvas.width / 2, canvas.height / 2);
+    }
+
+    drawPlayScreen() {
+        // updateEnemies()
+        // updateCollectables()
+        // updateFuels()
+    
+        player.draw()
+        player.drawFuelGauge()
     }
 
     drawEndScreen() {
