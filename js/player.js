@@ -69,9 +69,8 @@ class Player {
 
     refuel() {
         this.fuel += 1000
-
-        if (this.fuel > 2500) {
-            this.fuel = 2500
+        if (this.fuel > 2000){
+            this.fuel = 2000
         }
     }
 
