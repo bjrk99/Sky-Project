@@ -1,7 +1,7 @@
 function spawnFuel() {
     const timer = () => {
         fuels.push(new Fuel())
-        let interval = Math.random() * (30000 - 10000) + 10000
+        let interval = Math.random() * (20000 - 10000) + 10000
         setTimeout(timer, interval)
     }
     timer()
@@ -25,8 +25,13 @@ class Fuel {
     }
 
     update() {
+<<<<<<< HEAD
+        this.draw();
+        this.y += 0.8;
+=======
         this.draw()
-        this.y += 1
+        this.y += 0.8
+>>>>>>> cbd60ac01c7aab9bd7cbad9f7f094d71eed1c0db
     }
 
     randSpawnPoint() {
