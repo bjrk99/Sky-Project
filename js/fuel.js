@@ -42,7 +42,7 @@ class Fuel {
     randSpawnPoint() {
         let sp = {
             x: Math.random() * (innerWidth - 100) + 50,
-            y: 0 - this.height - (Math.random() * 250)
+            y: 0 - this.height
         }
         console.log(sp)
         return sp
