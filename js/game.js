@@ -62,7 +62,14 @@ class Game {
     }
 
     initialise() {
+        walls = []
+        waves = []
+        collectables = []
+        fuels = []
+
         player.initialise()
+        this.playFrame = -1
+
         spawnFuel()
     }
 }
