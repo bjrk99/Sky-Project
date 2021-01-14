@@ -2,7 +2,7 @@ function spawnFuel() {
     const timer = () => {
         currentFuel = new Fuel()
         let interval = Math.random() * (30000 - 10000) + 10000
-        setTimeout(fuelTimer, fuelInterval)
+        setTimeout(timer, interval)
     }
     timer()
 }
