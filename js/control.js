@@ -54,10 +54,6 @@ window.addEventListener('keyup', function(e){
 });
 
 function playerMovement(){
-    if (startingScreen || gameOverScreen || player.fuel <= 0) {
-        return
-    }
-
     if (leftArrowPressed && (!upArrowPressed && !downArrowPressed)){
         player.moveLeft();
     }
