@@ -4,7 +4,7 @@ class wall {
     constructor(){
         this.left = (Math.random() * canvas.width / 3) + 20;
         this.right = (Math.random() * canvas.width / 3) + 20;
-        this.y = 0; // starting position
+        this.y = -20; // starting position
         this.width = 20;
         this.color = 'white';
     }
@@ -20,8 +20,8 @@ class wall {
 }
 
 function spawnWall(){
-    if (frame%450 === 0){
-        wallArray.unshift(new wall); // every 200 frames - new wall spawns
+    if (frame%400 === 0){
+        wallArray.unshift(new wall); // every 400 frames - new wall spawns
     }
 
     for (let i = 0; i < wallArray.length; i++){
