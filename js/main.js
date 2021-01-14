@@ -101,25 +101,6 @@ function checkForWallCollision(){
     }
 }
 
-function spawnCollectables() {
-    collectableTimer = () => {
-        collectables.push(new Collectable())
-        collectableInterval = Math.random() * (20000 - 5000) + 5000
-        setTimeout(collectableTimer, collectableInterval)
-    }
-    collectableTimer()
-}
-
-function spawnFuel() {
-    fuelTimer = () => {
-        console.log('fuel spawned')
-        currentFuel = new Fuel()
-        let fuelInterval = Math.random() * (30000 - 10000) + 10000
-        setTimeout(fuelTimer, fuelInterval)
-    }
-    fuelTimer()
-}
-
 animate();
 
 // addEventListeners
