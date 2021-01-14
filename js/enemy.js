@@ -27,6 +27,30 @@ function spawnEnemies() {
 //     timer()
 // }
 
+function updateEnemies() {
+    waves.forEach((wave, waveIndex) => {
+        wave.forEach((enemy, enemyIndex) => {
+            enemy.update()
+            if (player.collision(enemy)) {
+                mainGamePlayScreen = false;
+                gameOverScreen = true;
+            }
+
+            if (offScreen(enemy)) {
+                setTimeout(() => {
+                    wave.splice(enemyIndex, 1)
+
+                    if (wave.length == 0) {
+                        waves.splice(waveIndex, 1)
+                    }
+
+                    player.addScoreForAvoidedObjects();
+                }, 0)
+            }
+        })
+    })
+}
+
 function randColour() {
     const r = Math.random() * (255 - 30) + 30
     const g = Math.random() * (255 - 30) + 30

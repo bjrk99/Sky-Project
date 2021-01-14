@@ -33,27 +33,7 @@ function animate(){
         spawnWall();
         checkForWallCollision();
 
-        waves.forEach((wave, waveIndex) => {
-            wave.forEach((enemy, enemyIndex) => {
-                enemy.update()
-                if (player.collision(enemy)) {
-                    mainGamePlayScreen = false;
-                    gameOverScreen = true;
-                }
-
-                if (offScreen(enemy)) {
-                    setTimeout(() => {
-                        wave.splice(enemyIndex, 1)
-
-                        if (wave.length == 0) {
-                            waves.splice(waveIndex, 1)
-                        }
-
-                        player.addScoreForAvoidedObjects();
-                    }, 0)
-                }
-            })
-        })
+        updateEnemies()
 
         collectables.forEach((coll, index) => {
             coll.update()
@@ -80,8 +60,6 @@ function animate(){
         player.fuel-=1
 
         frame++;
-        ctx.fillStyle = "white";
-        ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
         if (player.fuel <= 0){
             mainGamePlayScreen = false;
             gameOverScreen = true;

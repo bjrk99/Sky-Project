@@ -3,18 +3,18 @@ class Game {
 
     }
 
-    displayStartScreen() {
+    start() {
+        
+    }
+
+    drawStartScreen() {
         ctx.font = "60px Comic Sans MS";
         ctx.fillText("GAME TITLE", canvas.width / 2, canvas.height / 6);
         ctx.font = "30px Comic Sans MS";
         ctx.fillText("PRESS ENTER", canvas.width / 2, canvas.height / 2);
     }
 
-    displayPlayScreen() {
-
-    }
-
-    displayEndScreen() {
+    drawEndScreen() {
         ctx.font = "60px Comic Sans MS";
         if (player.fuel > 0){
             ctx.fillText("YOU CRASHED - GAME OVER", canvas.width / 2, canvas.height / 6);
