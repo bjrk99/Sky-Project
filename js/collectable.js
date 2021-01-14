@@ -31,7 +31,7 @@ class Collectable {
         ctx.translate(this.x, this.y)
         ctx.moveTo(0, 0 - this.radius)
 
-        for (i = 0; i < this.points; i++) {
+        for (let i = 0; i < this.points; i++) {
             ctx.rotate(Math.PI / this.points)
             ctx.lineTo(0, 0 - (this.radius * 2))
             ctx.rotate(Math.PI / this.points)

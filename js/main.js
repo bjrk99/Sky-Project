@@ -28,6 +28,10 @@ function animate(){
         displayStartGame();
     }
     else if (mainGamePlayScreen){
+        spawnEnemies()
+        spawnWall();
+        checkForWallCollision();
+
         waves.forEach((wave, waveIndex) => {
             wave.forEach((enemy, enemyIndex) => {
                 enemy.update()
@@ -64,7 +68,7 @@ function animate(){
             fuel.update()
             if (player.collision(fuel)) {
                 fuels.splice(index, 1)
-                player.fuel += 500;
+                player.refuel()
             }
         })
 
@@ -74,8 +78,6 @@ function animate(){
 
         player.fuel-=1
 
-        spawnWall();
-        checkForWallCollision();
         frame++;
         ctx.fillStyle = "white";
         ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
