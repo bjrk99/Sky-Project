@@ -91,31 +91,6 @@ function animate(){
     // end
 }
 
-function spawnWave() {
-    max = innerWidth / 160
-    var waveSize = Math.random() * (max - 3) + 3
-    var wave = []
-    
-    for (i = 0; i < waveSize; i++){
-        var enemy = new Enemy(waveSize)
-        wave.push(enemy)
-    }
-    
-    waves.push(wave)
-}
-
-function spawnEnemies() {
-    let interval = 5000
-    timer = () => {
-        // if (interval > 1000) {
-        //     interval -= 200
-        // }
-        spawnWave()
-        setTimeout(timer, interval)
-    }
-    timer()
-}
-
 function spawnCollectables() {
     collectableTimer = () => {
         collectables.push(new Collectable())
