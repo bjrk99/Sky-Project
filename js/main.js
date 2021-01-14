@@ -150,10 +150,3 @@ function displayGameOver(){
     ctx.fillText("PRESS ENTER TO CONTINUE", canvas.width / 2, canvas.height / 1.5);
     ctx.font = "30px Comic Sans MS";
 }
-
-function displayNoFuel(){
-    ctx.font = "60px Comic Sans MS";
-    ctx.fillText("OH NO...", canvas.width / 2, canvas.height / 6);
-    ctx.font = "30px Comic Sans MS";
-    ctx.fillText("RUN OUT OF FUEL", canvas.width / 2, canvas.height / 2);
-}
