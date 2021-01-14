@@ -28,9 +28,6 @@ function animate(){
         displayStartGame();
     }
     else if (mainGamePlayScreen){
-        spawnWall();
-        checkForWallCollision();
-
         waves.forEach((wave, waveIndex) => {
             wave.forEach((enemy, enemyIndex) => {
                 enemy.update()
@@ -67,7 +64,7 @@ function animate(){
             fuel.update()
             if (player.collision(fuel)) {
                 fuels.splice(index, 1)
-                player.refuel()
+                player.fuel += 500;
             }
         })
 
@@ -77,6 +74,8 @@ function animate(){
 
         player.fuel-=1
 
+        spawnWall();
+        checkForWallCollision();
         frame++;
         ctx.fillStyle = "white";
         ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
@@ -108,7 +107,7 @@ function checkForWallCollision(){
                 mainGamePlayScreen = false;
                 gameOverScreen = true;
             }
-            else if (player.x > (canvas.width - wallArray[i].rightSide)){
+            else if (player.x + player.width > (canvas.width - wallArray[i].rightSide)){
                 mainGamePlayScreen = false;
                 gameOverScreen = true;
             }
@@ -118,7 +117,7 @@ function checkForWallCollision(){
                 mainGamePlayScreen = false;
                 gameOverScreen = true;
             }
-            else if (player.x > (canvas.width - wallArray[i].rightSide)){
+            else if (player.x + player.width > (canvas.width - wallArray[i].rightSide)){
                 mainGamePlayScreen = false;
                 gameOverScreen = true;
             }
