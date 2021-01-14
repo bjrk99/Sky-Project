@@ -67,7 +67,7 @@ function animate(){
             fuel.update()
             if (player.collision(fuel)) {
                 fuels.splice(index, 1)
-                player.fuel += 500
+                player.refuel()
             }
         })
 

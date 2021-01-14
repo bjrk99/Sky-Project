@@ -67,6 +67,14 @@ class Player {
         return dist - radius - (player.width / 2) <= 0
     }
 
+    refuel() {
+        this.fuel += 1000
+
+        if (this.fuel > 2500) {
+            this.fuel = 2500
+        }
+    }
+
     addScoreForAvoidedObjects(){
         this.score += 5;
     }
