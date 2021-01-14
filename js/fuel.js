@@ -26,7 +26,7 @@ class Fuel {
 
     update() {
         this.draw()
-        this.y += 1
+        this.y += 0.8
     }
 
     randSpawnPoint() {
