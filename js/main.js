@@ -28,6 +28,9 @@ function animate(){
         displayStartGame();
     }
     else if (mainGamePlayScreen){
+        spawnWall();
+        checkForWallCollision();
+
         waves.forEach((wave, waveIndex) => {
             wave.forEach((enemy, enemyIndex) => {
                 enemy.update()
@@ -74,8 +77,6 @@ function animate(){
 
         player.fuel-=1
 
-        spawnWall();
-        checkForWallCollision();
         frame++;
         ctx.fillStyle = "white";
         ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
