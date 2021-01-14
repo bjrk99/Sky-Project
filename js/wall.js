@@ -2,16 +2,16 @@ const wallArray = [];
 
 class wall {
     constructor(){
-        this.left = (Math.random() * canvas.width / 3) + 20;
-        this.right = (Math.random() * canvas.width / 3) + 20;
+        this.leftSide = (Math.random() * canvas.width / 3) + 20;
+        this.rightSide = (Math.random() * canvas.width / 3) + 20;
         this.y = -20; // starting position
-        this.width = 20;
+        this.height = 20;
         this.color = 'white';
     }
     draw(){
         ctx.fillStyle = this.color;
-        ctx.fillRect(0, this.y, this.left, this.width); // left wall
-        ctx.fillRect(canvas.width - this.right, this.y, this.right, this.width); // right wall
+        ctx.fillRect(0, this.y, this.leftSide, this.height); // left wall
+        ctx.fillRect(canvas.width - this.rightSide, this.y, this.rightSide, this.height); // right wall
     }
     update(){
         this.y += 1; // speed how fast moves
@@ -28,7 +28,7 @@ function spawnWall(){
         wallArray[i].update();
     }
 
-    if (wallArray.length > 100){
+    if (wallArray.length > 30){
         wallArray.pop(wallArray[0]);  // clean up resources
     }
 }
