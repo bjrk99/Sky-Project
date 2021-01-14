@@ -9,10 +9,7 @@ ctx.textAlign = "center";
 let frame = 0; // keep track of loops - will help with conditions for what obstacles happen
 // let verticalPosition = canvas.height - 60;
 // let horizontalPosition = canvas.width / 2;
-let leftArrowPressed = false;
-let rightArrowPressed = false;
-let upArrowPressed = false;
-let downArrowPressed = false;
+
 let startingScreen = true;
 let mainGamePlayScreen = false;
 let gameOverScreen = false;
