@@ -33,6 +33,6 @@ class Enemy {
 
     update() {
         this.draw()
-        this.y = this.y + 1 + (player.score / 5 / 50)
+        this.y = this.y + 1
     }
 }
