@@ -4,15 +4,8 @@ let upArrowPressed = false;
 let downArrowPressed = false;
 
 function enterHandler() {
-    if (startingScreen) {
-        startingScreen = false;
-        mainGamePlayScreen = true;
-        //spawnEnemies();
-        spawnCollectables()
-        spawnFuel()
-    }
-    else if (gameOverScreen) {
-        window.location.reload();
+    if (game.state == STATE.start || game.state == STATE.end) {
+        game.state = STATE.play
     }
 }
 
