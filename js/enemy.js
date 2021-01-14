@@ -1,9 +1,3 @@
-function randSpawnPoint(ySize, waveSize) {
-    var x = Math.random() * (canvas.width - 100) + 50
-    var y = 0 - ySize - (Math.random() * ySize * waveSize)
-    return {x: x, y: y}
-}
-
 function randColour() {
     const r = Math.random() * (255 - 30) + 30
     const g = Math.random() * (255 - 30) + 30
@@ -16,7 +10,7 @@ class Enemy {
     constructor(waveSize) {
         this.radius = Math.random() * (60 - 20) + 20
 
-        this.sp = randSpawnPoint(this.radius, waveSize)
+        this.sp = this.randSpawnPoint(waveSize)
         this.x = this.sp.x
         this.y = this.sp.y
 
@@ -34,5 +28,11 @@ class Enemy {
     update() {
         this.draw()
         this.y = this.y + 1
+    }
+
+    randSpawnPoint(waveSize) {
+        var x = Math.random() * (canvas.width - 100) + 50
+        var randY = Math.random() * this.radius * waveSize
+        return {x: x, y: 0 - this.radius - randY}
     }
 }
