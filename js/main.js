@@ -43,7 +43,9 @@ function animate(){
                 if (enemy.y - enemy.radius > canvas.height){
                     setTimeout(() => {
                         wave.splice(inIndex, 1)
-                        player.addScoreForAvoidedObjects();
+                        if (player.fuel > 0){
+                            player.addScoreForAvoidedObjects();
+                        }
                         if (wave.length == 0){
                             waves.splice(outIndex, 1)
                         }
@@ -79,6 +81,9 @@ function animate(){
         frame++;
         ctx.fillStyle = "white";
         ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
+        if (player.fuel <= 0){
+            displayNoFuel();
+        }
     }
     else if (gameOverScreen){
         displayGameOver();
@@ -218,4 +223,11 @@ function displayGameOver(){
     ctx.font = "15px Comic Sans MS";
     ctx.fillText("PRESS ENTER TO CONTINUE", canvas.width / 2, canvas.height / 1.5);
     ctx.font = "30px Comic Sans MS";
+}
+
+function displayNoFuel(){
+    ctx.font = "60px Comic Sans MS";
+    ctx.fillText("OH NO...", canvas.width / 2, canvas.height / 6);
+    ctx.font = "30px Comic Sans MS";
+    ctx.fillText("RUN OUT OF FUEL", canvas.width / 2, canvas.height / 2);
 }
