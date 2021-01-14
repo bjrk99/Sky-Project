@@ -19,6 +19,7 @@ let gameOverScreen = false;
 
 const collectables = []
 const waves = []
+let currentFuel
 
 function animate(){
     let frameID = requestAnimationFrame(animate); // sets up animation loop - recursion
@@ -32,7 +33,6 @@ function animate(){
     }
     else if (mainGamePlayScreen){
         // ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
-        player.drawFuel()
         waves.forEach((wave, outIndex) => {
             wave.forEach((enemy, inIndex) => {
                 dist = player.distanceTo(enemy)
@@ -69,7 +69,16 @@ function animate(){
             }
         })
         
+        player.drawFuel()
         player.fuel-=1
+
+        if(currentFuel.show){
+            currentFuel.update()
+            if (player.distanceToMid(currentFuel) - player.width <= 0){
+                player.fuel += 500
+                currentFuel.show = false
+            }
+        }
 
         spawnWall();
         frame++;
@@ -116,6 +125,16 @@ function spawnCollectables() {
     collectableTimer()
 }
 
+function spawnFuel() {
+    fuelTimer = () => {
+        console.log('fuel spawned')
+        currentFuel = new Fuel()
+        let fuelInterval = Math.random() * (30000 - 10000) + 10000
+        setTimeout(fuelTimer, fuelInterval)
+    }
+    fuelTimer()
+}
+
 animate();
 
 // addEventListeners
@@ -140,7 +159,6 @@ window.addEventListener('keydown', function(e){
 });
 
 window.addEventListener('keyup', function(e){
-    console.log(e.code);
     if (e.code === 'ArrowLeft'){
         leftArrowPressed = false;
     }
@@ -162,6 +180,7 @@ window.addEventListener('keydown', function(e){
             mainGamePlayScreen = true;
             spawnEnemies();
             spawnCollectables()
+            spawnFuel()
         }
         else if (gameOverScreen){
             window.location.reload();

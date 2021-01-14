@@ -48,6 +48,19 @@ class Player {
         }
         return Math.hypot(mid.x - obj.x, mid.y - obj.y)
     }
+    distanceToMid(obj) {
+        let mid = {
+            x: this.x + this.width / 2,
+            y: this.y + this.height / 2
+        }
+
+        let objMid = {
+            x: obj.x + obj.width / 2,
+            y: obj.y + obj.height / 2
+        }
+
+        return Math.hypot(mid.x - objMid.x, mid.y - objMid.y)
+    }
     addScoreForAvoidedObjects(){
         this.score += 5;
     }
