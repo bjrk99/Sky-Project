@@ -1,13 +1,15 @@
-STATES = {
+const STATE = {
     start: 0, 
     play: 1, 
-    end: 2
+    end: 2,
+    quit: 3
 }
 
 
 class Game {
     constructor() {
-        this.state = STATES.start
+        this.frame = -1
+        this.state = STATE.start
     }
 
     start() {
