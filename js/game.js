@@ -28,8 +28,17 @@ class Game {
         player.drawFuelGauge()
     }
 
+    frameLogic() {
+        playerMovement()
+        player.fuel -= 1
+        if (player.fuel <= 0) {
+            this.state = STATE.end
+        }
+    }
+
     drawEndScreen() {
         ctx.font = "60px Comic Sans MS";
+        ctx.fillStyle = 'white'
         if (player.fuel > 0){
             ctx.fillText("YOU CRASHED - GAME OVER", canvas.width / 2, canvas.height / 6);
         }
@@ -41,5 +50,9 @@ class Game {
         ctx.font = "15px Comic Sans MS";
         ctx.fillText("PRESS ENTER TO CONTINUE", canvas.width / 2, canvas.height / 1.5);
         ctx.font = "30px Comic Sans MS";
+    }
+
+    initialise() {
+        player.initialise()
     }
 }

@@ -5,6 +5,7 @@ let downArrowPressed = false;
 
 function enterHandler() {
     if (game.state == STATE.start || game.state == STATE.end) {
+        game.initialise()
         game.state = STATE.play
     }
 }

@@ -1,16 +1,12 @@
 class Player {
-    constructor(){
-        this.x = innerWidth / 2;
-        this.y = innerHeight - 100;
-        
+    constructor(){        
         this.width = 20;
         this.height = 20;
 
         this.widthSpeedFactor = innerWidth / 140
         this.heightSpeedFactor = innerHeight / 80
 
-        this.score = 0;
-        this.fuel = 2000
+        this.initialise()
     }
 
     draw(){
@@ -20,7 +16,7 @@ class Player {
 
     drawFuelGauge(){
         ctx.fillStyle = 'green'
-        ctx.fillRect(innerWidth - 50, innerHeight - (this.fuel / 10), 50, this.fuel / 10)
+        ctx.fillRect(innerWidth - 50, canvas.height - (this.fuel / 10), 50, this.fuel / 10)
     }
 
     addScore(score){
@@ -58,6 +54,14 @@ class Player {
         if (this.fuel > 2000){
             this.fuel = 2000
         }
+    }
+
+    initialise() {
+        this.x = innerWidth / 2;
+        this.y = innerHeight - 100;
+
+        this.score = 0;
+        this.fuel = 500
     }
 
     moveLeft(){

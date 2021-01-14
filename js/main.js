@@ -22,8 +22,7 @@ function animate() {
             break
         case STATE.play:
             game.drawPlayScreen()
-            playerMovement()
-            player.fuel-=1
+            game.frameLogic()
             break
         case STATE.end:
             game.drawEndScreen()
