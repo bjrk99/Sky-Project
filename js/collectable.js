@@ -1,3 +1,12 @@
+function spawnCollectables() {
+    const timer = () => {
+        collectables.push(new Collectable())
+        let interval = Math.random() * (20000 - 5000) + 5000
+        setTimeout(collectableTimer, interval)
+    }
+    timer()
+}
+
 class Collectable {
     constructor() {
         this.radius = 10
