@@ -2,6 +2,7 @@ let leftArrowPressed = false;
 let rightArrowPressed = false;
 let upArrowPressed = false;
 let downArrowPressed = false;
+let controlLeftPressed = false;
 
 function enterHandler() {
     if (startingScreen) {
@@ -36,6 +37,9 @@ window.addEventListener('keydown', function(e){
         case 'ArrowDown':
             downArrowPressed = true;
             break
+        case 'ControlLeft':
+            controlLeftPressed = true;
+            break;
     }
 });
 
@@ -53,6 +57,8 @@ window.addEventListener('keyup', function(e){
         case 'ArrowDown':
             downArrowPressed = false;
             break
+        case 'ControlLeft':
+            controlLeftPressed = false;
     }
 });
 

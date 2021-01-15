@@ -24,22 +24,38 @@ class Player {
     }
     moveLeft(){
         if (this.x > 8){
-            this.x -= this.widthSpeedFactor;
+            if (controlLeftPressed){
+                this.x -= this.widthSpeedFactor - 5;
+            }else{
+                this.x -= this.widthSpeedFactor;
+            }
         }
     }
     moveRight(){
         if (this.x < (canvas.width - 28)){
-            this.x += this.widthSpeedFactor;
+            if (controlLeftPressed){
+                this.x += this.widthSpeedFactor - 5;
+            } else{
+                this.x += this.widthSpeedFactor;
+            }
         }
     }
     moveUp(){
         if (this.y > 8){
-            this.y -= this.heightSpeedFactor;
+            if (controlLeftPressed){
+                this.y -= this.heightSpeedFactor - 5;
+            } else {
+                this.y -= this.heightSpeedFactor;
+            }
         }
     }
     moveDown(){
         if (this.y < (canvas.height - 28)){
-            this.y += this.heightSpeedFactor;
+            if (controlLeftPressed){
+                this.y += this.heightSpeedFactor - 5;
+            } else {
+                this.y += this.heightSpeedFactor;
+            }
         }
     }
     distanceTo(obj) {
