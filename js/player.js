@@ -88,7 +88,7 @@ class Player {
 
         const velocity = {
             x: 0,
-            y: -3
+            y: -2
         }
         const mid = {
             x: this.x + this.width / 2,
