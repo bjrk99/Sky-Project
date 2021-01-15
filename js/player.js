@@ -25,7 +25,7 @@ class Player {
     moveLeft(){
         if (this.x > 8){
             if (shiftLeftPressed){
-                this.x -= this.widthSpeedFactor - (this.heightSpeedFactor / 2);
+                this.x -= this.widthSpeedFactor / 2
             }else{
                 this.x -= this.widthSpeedFactor;
             }
@@ -34,7 +34,7 @@ class Player {
     moveRight(){
         if (this.x < (canvas.width - 28)){
             if (shiftLeftPressed){
-                this.x += this.widthSpeedFactor - (this.heightSpeedFactor / 2);
+                this.x += this.widthSpeedFactor / 2
             } else{
                 this.x += this.widthSpeedFactor;
             }
@@ -43,7 +43,7 @@ class Player {
     moveUp(){
         if (this.y > 8){
             if (shiftLeftPressed){
-                this.y -= this.heightSpeedFactor - (this.heightSpeedFactor / 2);
+                this.y -= this.heightSpeedFactor / 2
             } else {
                 this.y -= this.heightSpeedFactor;
             }
@@ -52,7 +52,7 @@ class Player {
     moveDown(){
         if (this.y < (canvas.height - 28)){
             if (shiftLeftPressed){
-                this.y += this.heightSpeedFactor - (this.heightSpeedFactor / 2);
+                this.y += this.heightSpeedFactor / 2
             } else {
                 this.y += this.heightSpeedFactor;
             }
