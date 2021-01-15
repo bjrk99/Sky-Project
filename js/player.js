@@ -79,7 +79,7 @@ class Player {
         this.score += 5;
     }
     addScoreForCollectable(){
-        this.score += 25
+        this.score += 100
     }
     shoot() {
         if (this.ammo <= 0){
