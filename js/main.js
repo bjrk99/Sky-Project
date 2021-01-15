@@ -14,6 +14,7 @@ let startingScreen = true;
 let mainGamePlayScreen = false;
 let gameOverScreen = false;
 
+const projectiles = []
 const collectables = []
 const waves = []
 const fuels = []
@@ -51,6 +52,14 @@ function animate(){
                         player.addScoreForAvoidedObjects();
                     }, 0)
                 }
+
+                projectiles.forEach((proj, projIndex) => {
+                    proj.update()
+                    if (proj.collision(enemy)) {
+                        wave.splice(enemyIndex, 1)
+                        projectiles.splice(projIndex, 1)
+                    }
+                })
             })
         })
 

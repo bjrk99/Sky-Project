@@ -8,6 +8,7 @@ class Player {
         this.height = 20;
         this.score = 0;
         this.fuel = 2000
+        this.ammo = 3
 
         console.log(innerHeight, innerWidth)
         this.widthSpeedFactor = innerWidth / 140
@@ -79,6 +80,24 @@ class Player {
     }
     addScoreForCollectable(){
         this.score += 25
+    }
+    shoot() {
+        if (this.ammo <= 0){
+            return
+        }
+
+        const velocity = {
+            x: 0,
+            y: -3
+        }
+        const mid = {
+            x: this.x + this.width / 2,
+            y: this.y + this.height / 2
+        }
+
+        const proj = new Projectile(mid.x, mid.y, 3, velocity)
+        projectiles.push(proj)
+        this.ammo--
     }
 }
 

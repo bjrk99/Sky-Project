@@ -21,6 +21,9 @@ window.addEventListener('keydown', function(e){
         case 'Enter':
             enterHandler()
             break;
+        case 'Space':
+            player.shoot()
+            break
         case 'ArrowLeft':
             leftArrowPressed = true;
             break
