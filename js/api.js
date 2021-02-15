@@ -1,15 +1,5 @@
 let previousState = false;
 
-// load event - checks online property of navigator
-window.addEventListener("load", (event) => {
-    console.log(navigator.onLine);
-    if (navigator.onLine){
-        startingScreen = false;
-        mainGamePlayScreen = false;
-        gameOverScreen = false;
-    }
-  })
-
   // offline event listener
   window.addEventListener("offline", (event) => {
     startingScreen = true;
@@ -51,6 +41,7 @@ window.addEventListener("load", (event) => {
       }
   }, 3000);
 
+  // load event - checks online property of navigator
   window.addEventListener("load", async (event) => {
     const statusOnline = (await checkOnlineStatus());
 
