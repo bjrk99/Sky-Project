@@ -25,7 +25,7 @@ window.addEventListener("load", (event) => {
   // checks online status - returns true or false
   const checkOnlineStatus = async () => {
     try {
-      const online = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+      const online = await fetch('https://jsonplaceholder.typicode.com/posts/1'); // CHANGE THIS API
       return online.status >= 200 && online.status < 300; // either true or false
     } catch (err) {
       return false; // definitely offline
