@@ -1,17 +1,3 @@
-  // offline event listener
-  /*window.addEventListener("offline", (event) => {
-    startingScreen = true;
-    window.location.href = ("index.html");
-  });
-
-  // online event listener
-  window.addEventListener("online", (event) => {
-    startingScreen = false;
-    mainGamePlayScreen = false;
-    gameOverScreen = false;
-    window.location.href = ("holdingPage.html");
-  });
-
   // checks online status - returns true or false
   const checkOnlineStatus = async () => {
     try {
@@ -23,36 +9,41 @@
   };
 
   // every 3 seconds check the status of online
-  let previousState = false;
   setInterval(async () => {
     const result = await checkOnlineStatus();
-    if (previousState != result){
-        if (result){
-            startingScreen = false;
-            mainGamePlayScreen = false;
-            gameOverScreen = false;
-            previousState = result;
-            window.location.href = ("holdingPage.html");
-        }
-        else{
-            startingScreen = true;
-            mainGamePlayScreen = false;
-            gameOverScreen = false;
-            previousState = result;
-            window.location.href = ("index.html");
-        }   
-      }
+    if (result){
+        loadHoldingPage();
+    }
+    else{
+        loadGamePage();
+    }
   }, 3000);
 
   // load event - checks online property of navigator
   window.addEventListener("load", async (event) => {
     const statusOnline = (await checkOnlineStatus());
-
       if (statusOnline){
+          loadHoldingPage();
+    }
+    else {
+        loadGamePage();
+    }
+
+  });
+
+function loadHoldingPage(){
+      if (document.title == "Game"){
         startingScreen = false;
         mainGamePlayScreen = false;
         gameOverScreen = false;
+        window.location.href = ("holdingPage.html");
     }
+}
 
-  });*/
+function loadGamePage(){
+    if (document.title == "Back Online"){
+        startingScreen = true;
+        window.location.href = ("index.html");
+    }
+}
 
