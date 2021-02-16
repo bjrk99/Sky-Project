@@ -1,3 +1,29 @@
+window.addEventListener("offline", (event) => {
+    loadGamePage();
+  });
+
+  window.addEventListener("online", (event) => {
+    loadHoldingPage();
+  });
+  
+  function loadHoldingPage(){
+    if (document.title == "Game"){
+      startingScreen = false;
+      mainGamePlayScreen = false;
+      gameOverScreen = false;
+      window.location.href = ("holdingPage.html");
+  }
+}
+
+function loadGamePage(){
+  if (document.title == "Back Online"){
+      startingScreen = true;
+      window.location.href = ("index.html");
+  }
+}
+
+  /* USE BELOW TO MAKE CALLS TO API LATER
+
   // checks online status - returns true or false
   const checkOnlineStatus = async () => {
     try {
@@ -8,7 +34,7 @@
     }
   };
 
-  // every 3 seconds check the status of online
+ // every 3 seconds check the status of online
   setInterval(async () => {
     const result = await checkOnlineStatus();
     if (result){
@@ -17,13 +43,13 @@
     else{
         loadGamePage();
     }
-  }, 3000);
+  }, 3000);   // use this idea for checking api
 
   // load event - checks online property of navigator
   window.addEventListener("load", async (event) => {
     const statusOnline = (await checkOnlineStatus());
       if (statusOnline){
-          loadHoldingPage();
+        loadHoldingPage();
     }
     else {
         loadGamePage();
@@ -31,19 +57,5 @@
 
   });
 
-function loadHoldingPage(){
-      if (document.title == "Game"){
-        startingScreen = false;
-        mainGamePlayScreen = false;
-        gameOverScreen = false;
-        window.location.href = ("holdingPage.html");
-    }
-}
-
-function loadGamePage(){
-    if (document.title == "Back Online"){
-        startingScreen = true;
-        window.location.href = ("index.html");
-    }
-}
+  END */
 
