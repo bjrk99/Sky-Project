@@ -1,5 +1,5 @@
   // offline event listener
-  window.addEventListener("offline", (event) => {
+  /*window.addEventListener("offline", (event) => {
     startingScreen = true;
     window.location.href = ("index.html");
   });
@@ -54,5 +54,5 @@
         gameOverScreen = false;
     }
 
-  });
+  });*/
 
