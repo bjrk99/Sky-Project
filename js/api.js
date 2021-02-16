@@ -1,8 +1,7 @@
-let previousState = false;
-
   // offline event listener
   window.addEventListener("offline", (event) => {
     startingScreen = true;
+    window.location.href = ("index.html");
   });
 
   // online event listener
@@ -10,6 +9,7 @@ let previousState = false;
     startingScreen = false;
     mainGamePlayScreen = false;
     gameOverScreen = false;
+    window.location.href = ("holdingPage.html");
   });
 
   // checks online status - returns true or false
@@ -23,6 +23,7 @@ let previousState = false;
   };
 
   // every 3 seconds check the status of online
+  let previousState = false;
   setInterval(async () => {
     const result = await checkOnlineStatus();
     if (previousState != result){
@@ -31,12 +32,14 @@ let previousState = false;
             mainGamePlayScreen = false;
             gameOverScreen = false;
             previousState = result;
+            window.location.href = ("holdingPage.html");
         }
         else{
             startingScreen = true;
             mainGamePlayScreen = false;
             gameOverScreen = false;
             previousState = result;
+            window.location.href = ("index.html");
         }   
       }
   }, 3000);
