@@ -22,16 +22,3 @@ header {
     padding-top: 50px;
     min-height: 200px;
 }
-
-.button {
-    font-size: 20px;
-    border-radius: 8px;
-    border-style: none;
-    margin-top: 2%;
-    padding: 13px 25px;
-    width: 200px;
-    text-align: center;
-    text-transform: bold;
-	color: #fff;
-	background-color: #506960;
-}

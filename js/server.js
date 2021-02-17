@@ -13,6 +13,8 @@ function turnOffServer() {
             "Content-type": "application/json; charset=UTF-8"
           }
     })
+
+    document.querySelector("h1").innerText = "Server is down";
 }
 
 function turnOnServer() {
@@ -25,4 +27,6 @@ function turnOnServer() {
             "Content-type": "application/json; charset=UTF-8"
           }
     })
+
+    document.querySelector("h1").innerText = "Server is up and running";
 }
