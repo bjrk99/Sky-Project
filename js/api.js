@@ -36,11 +36,16 @@ function loadGamePage(){
  // every 3 seconds gets online status
   setInterval(async () => {
     const result = await getOnlineStatus();
-    /*if (result){
+    if (result){
       if (document.title == "Game"){
-        document.window.href = ("holdingPage.html");
+        window.location.href = ("holdingPage.html");
       }
-    }*/
+    }
+    else {
+      if (document.title == "Back Online"){
+        window.location.href = ("index.html");
+      }
+    }
     console.log(result);
   }, 3000);
 
