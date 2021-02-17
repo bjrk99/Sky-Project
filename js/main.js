@@ -13,7 +13,8 @@ let frame = 0; // keep track of loops - will help with conditions for what obsta
 let startingScreen = true;
 let mainGamePlayScreen = false;
 let gameOverScreen = false;
-let scoreSaved = false
+
+let scoreSaved
 
 const projectiles = []
 const collectables = []
@@ -150,13 +151,6 @@ function displayStartGame(){
 
 // display end of the game function
 function displayGameOver(){
-    if (!scoreSaved) {
-        scoreSaved = true;
-        if (player.score > localStorage.getItem('highscore')) {
-            localStorage.setItem('highscore', player.score)
-        }
-    }
-
     ctx.font = "60px Comic Sans MS";
     if (player.fuel > 0){
         ctx.fillText("YOU CRASHED - GAME OVER", canvas.width / 2, canvas.height / 6);
@@ -165,10 +159,54 @@ function displayGameOver(){
         ctx.fillText("RUN OUT OF FUEL - GAME OVER", canvas.width / 2, canvas.height / 6);
     }
     ctx.font = "30px Comic Sans MS";
-    let hs = localStorage.getItem('highscore')
-    ctx.fillText("HIGH SCORE: " + (hs == null ? 0 : hs), canvas.width / 2, canvas.height / 2);
-    ctx.fillText("YOUR SCORE: " + player.score, canvas.width / 2, (canvas.height / 2) + 50);
+    //ctx.fillText("HIGH SCORE: " + (hs == null ? 0 : hs), canvas.width / 2, canvas.height / 2);
+    ctx.fillText("YOUR SCORE: " + player.score, canvas.width / 2, (canvas.height / 6) + 50);
     ctx.font = "15px Comic Sans MS";
-    ctx.fillText("PRESS ENTER TO CONTINUE", canvas.width / 2, canvas.height / 1.5);
+    ctx.fillText("PRESS ENTER TO CONTINUE", canvas.width / 2, canvas.height / 1.2);
     ctx.font = "30px Comic Sans MS";
+
+    if (!scoreSaved) {
+        saveScore()
+    }
+
+    displayHighscores()
+}
+
+function displayHighscores() {
+    let highscores = JSON.parse(localStorage.getItem('highscores'))
+    let top5 = Object.values(highscores).sort((a, b) => b - a).slice(0, 5)
+    let name = "N/A"
+    let usedEntries = []
+
+    ctx.font = "15px Comic Sans MS"
+
+    top5.forEach((score, index) => {
+        let keys = Object.keys(highscores)
+        for (let i = 0; i < keys.length; i++) {
+            if (highscores[keys[i]] == score) {
+                if (!usedEntries.includes(keys[i])) {
+                    name = keys[i]
+                    usedEntries.push(name)
+                    break;
+                }
+            }
+        }
+        let text = `#${index + 1}      ${name} : ${score}`
+        ctx.fillText(text, canvas.width / 2, (canvas.height / 3) + (50 * (index + 1)))
+    })
+}
+
+function saveScore() {
+    scoreSaved = true;
+    let highscores = JSON.parse(localStorage.getItem('highscores'))
+
+    if (highscores == null) {
+        highscores = {}
+    }
+    let name = prompt('Please enter your name', '')
+
+    if (player.score > (highscores[name] == null ? 0 : highscores[name])) {
+        highscores[name] = player.score
+        localStorage.highscores = JSON.stringify(highscores)
+    }
 }
