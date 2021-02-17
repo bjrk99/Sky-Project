@@ -6,19 +6,23 @@ document.getElementById("turnOn").addEventListener("click", turnOnServer);
 function turnOffServer() {
     fetch('http://localhost:3000/serverStatus', {
         method: 'PUT',
-            serverStatus: {
-                online: false
-            }
+        body: JSON.stringify({
+            online: false
+         }),
+         headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
     })
 }
 
 function turnOnServer() {
     fetch('http://localhost:3000/serverStatus', {
         method: 'PUT',
-       //  body: JSON.stringify({
-            serverStatus: {
-                online: true
-            }
-        // })
+         body: JSON.stringify({
+            online: true
+         }),
+         headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
     })
 }

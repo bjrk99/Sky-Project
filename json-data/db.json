@@ -1,6 +1,5 @@
 {
-  "serverStatus":
-    {
-        "online": false  
-    }
+  "serverStatus": {
+    "online": false
+  }
 }
