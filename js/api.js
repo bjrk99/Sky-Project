@@ -22,40 +22,25 @@ function loadGamePage(){
   }
 }
 
-  /* USE BELOW TO MAKE CALLS TO API LATER
+  // method gets online status
+  const getOnlineStatus = async () => {
+      let uri = "http://localhost:3000/serverStatus";
 
-  // checks online status - returns true or false
-  const checkOnlineStatus = async () => {
-    try {
-      const online = await fetch('https://jsonplaceholder.typicode.com/posts/1'); // CHANGE THIS API
-      return online.status >= 200 && online.status < 300; // either true or false
-    } catch (err) {
-      return false; // definitely offline
-    }
+      const res = await fetch(uri);
+      const serverStatus = await res.json();
+
+      const status = serverStatus.online;
+      return status;
   };
 
- // every 3 seconds check the status of online
+ // every 3 seconds gets online status
   setInterval(async () => {
-    const result = await checkOnlineStatus();
-    if (result){
-        loadHoldingPage();
-    }
-    else{
-        loadGamePage();
-    }
-  }, 3000);   // use this idea for checking api
-
-  // load event - checks online property of navigator
-  window.addEventListener("load", async (event) => {
-    const statusOnline = (await checkOnlineStatus());
-      if (statusOnline){
-        loadHoldingPage();
-    }
-    else {
-        loadGamePage();
-    }
-
-  });
-
-  END */
+    const result = await getOnlineStatus();
+    /*if (result){
+      if (document.title == "Game"){
+        document.window.href = ("holdingPage.html");
+      }
+    }*/
+    console.log(result);
+  }, 3000);
 

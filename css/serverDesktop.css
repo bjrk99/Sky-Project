@@ -35,11 +35,10 @@ header {
     font-size: 20px;
     border-radius: 8px;
     border-style: none;
-    margin-top: 2%;
+    margin: 1.5%;
     color: #506960;
     background-color: #e0ebe8;
     border-color: #506960;
-    padding: 13px 25px;
     width: 200px;
     text-align: center;
     transition: transform 0.2s ease;
