@@ -143,7 +143,7 @@ animate();
 // display start of the game function
 function displayStartGame(){
     ctx.font = "60px Comic Sans MS";
-    ctx.fillText("GAME TITLE", canvas.width / 2, canvas.height / 6);
+    ctx.fillText("EVIL CIRCLES", canvas.width / 2, canvas.height / 6);
     ctx.font = "30px Comic Sans MS";
     ctx.fillText("PRESS ENTER", canvas.width / 2, canvas.height / 2);
 }
