@@ -22,7 +22,6 @@ header {
 
 .mainContent {
     max-width: 1200px;
-    padding: 0 5px;
     margin: auto;
 }
 
@@ -51,4 +50,8 @@ header {
 	text-transform: bold;
 	color: #fff;
 	background-color: #506960;
+}
+
+.buttonArea {
+    min-height: 200px;
 }

@@ -35,3 +35,7 @@ header {
 	color: #fff;
 	background-color: #506960;
 }
+
+.buttonArea {
+    min-height: 200px;
+}
