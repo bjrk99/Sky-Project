@@ -119,7 +119,7 @@ class Player {
     earnFuel() {
         if (++this.collCount == 3) {
             this.collCount = 0
-            this.ammo++
+            this.ammo += 3;
         }
     }
 }
