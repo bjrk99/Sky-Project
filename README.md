@@ -1,1 +1,1 @@
-This is for the Sky project. Rewrite branch isn't as functional as main yet. The code's much nicer to read though.
+An independant take on the Sky project game. Missing a lot of functionality when compared to main.
