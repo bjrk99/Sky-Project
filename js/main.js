@@ -13,6 +13,7 @@ let mainGamePlayScreen = false;
 let gameOverScreen = false;
 
 let scoreSaved
+let gameStarted
 
 const projectiles = []
 const collectables = []
@@ -52,6 +53,7 @@ function animate(){
     }
     else if (mainGamePlayScreen){
         scoreSaved = false
+        gameStarted = false;
         spawnEnemies()
         spawnWall();
         checkForWallCollision();
@@ -169,6 +171,21 @@ function displayStartGame(){
     ctx.fillText("EVIL CIRCLES", canvas.width / 2, canvas.height * 0.25);
     ctx.font = fonts.small
     ctx.fillText("PRESS ENTER", canvas.width / 2, canvas.height * 0.75);
+    if (!gameStarted){
+        setTimeout(getInstructions, 30);
+        gameStarted = true;
+    }
+}
+
+// function for getting instructions
+function getInstructions () {
+    alert("REMEMBER - CIRCLES ARE EVIL!" + "\n\n"
+    + "You have 3 bullets + limited fuel" + "\n"
+    + "Use SPACEBAR to shoot and ARROWS to move" + "\n"
+    + "Hold down LEFT-SHIFT to slow down" + "\n"
+    + "SQUARES == FUEL || STARS == POINTS" + "\n"
+    + "Every 3 STARS == 3 BULLETS" + "\n\n"
+    + "GOOD LUCK :)");
 }
 
 // display end of the game function
