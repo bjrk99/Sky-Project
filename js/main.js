@@ -205,6 +205,11 @@ function saveScore() {
     }
     let name = prompt('Please enter your name', '')
 
+    if (name == "") {
+        console.log('no name')
+        return
+    }
+
     if (player.score > (highscores[name] == null ? 0 : highscores[name])) {
         highscores[name] = player.score
         localStorage.highscores = JSON.stringify(highscores)
