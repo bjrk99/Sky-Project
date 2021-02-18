@@ -21,6 +21,28 @@ const collectables = []
 const waves = []
 const fuels = []
 
+const fontSize = {
+    'extraSmall': innerWidth / 60,
+    'small': innerWidth / 30,
+    'medium': innerWidth / 20,
+    'large': innerWidth / 10
+}
+
+if (innerHeight > innerWidth) {
+    Object.keys(fontSize).forEach(key => {
+        if (key != 'large'){
+            fontSize[key] *= 1.75
+        }
+    })
+}
+
+const fonts = {
+    'extraSmall': `${fontSize.extraSmall}px Comic Sans MS`,
+    'small': `${fontSize.small}px Comic Sans MS`, 
+    'medium': `${fontSize.medium}px Comic Sans MS`, 
+    'large': `${fontSize.large}px Comic Sans MS`
+}
+
 function animate(){
     let frameID = requestAnimationFrame(animate); // sets up animation loop - recursion
     ctx.fillStyle = 'rgba(0,0,0,0.5)'
@@ -92,7 +114,8 @@ function animate(){
 
         frame++;
         ctx.fillStyle = "white";
-        ctx.fillText("SCORE: " + player.score, canvas.width/2.2, canvas.height/10);
+        ctx.font = fonts.small
+        ctx.fillText("SCORE: " + player.score, canvas.width / 2, canvas.height * 0.1);
         if (player.fuel <= 0){
             mainGamePlayScreen = false;
             gameOverScreen = true;
@@ -143,27 +166,26 @@ animate();
 
 // display start of the game function
 function displayStartGame(){
-    ctx.font = "60px Comic Sans MS";
-    ctx.fillText("EVIL CIRCLES", canvas.width / 2, canvas.height / 6);
-    ctx.font = "30px Comic Sans MS";
-    ctx.fillText("PRESS ENTER", canvas.width / 2, canvas.height / 2);
+    ctx.font = fonts.large;
+    ctx.fillText("EVIL CIRCLES", canvas.width / 2, canvas.height * 0.25);
+    ctx.font = fonts.small
+    ctx.fillText("PRESS ENTER", canvas.width / 2, canvas.height * 0.75);
 }
 
 // display end of the game function
 function displayGameOver(){
-    ctx.font = "60px Comic Sans MS";
-    if (player.fuel > 0){
-        ctx.fillText("YOU CRASHED - GAME OVER", canvas.width / 2, canvas.height / 6);
-    }
-    else {
-        ctx.fillText("RUN OUT OF FUEL - GAME OVER", canvas.width / 2, canvas.height / 6);
-    }
-    ctx.font = "30px Comic Sans MS";
-    //ctx.fillText("HIGH SCORE: " + (hs == null ? 0 : hs), canvas.width / 2, canvas.height / 2);
-    ctx.fillText("YOUR SCORE: " + player.score, canvas.width / 2, (canvas.height / 6) + 50);
-    ctx.font = "15px Comic Sans MS";
-    ctx.fillText("PRESS ENTER TO CONTINUE", canvas.width / 2, canvas.height / 1.2);
-    ctx.font = "30px Comic Sans MS";
+    ctx.font = fonts.medium;
+    // if (player.fuel > 0){
+    //     ctx.fillText("YOU CRASHED! - GAME OVER", canvas.width / 2, canvas.height * 0.15);
+    // }
+    // else {
+    //     ctx.fillText("YOU RAN OUT OF FUEL! - GAME OVER", canvas.width / 2, canvas.height * 0.15);
+    // }
+    ctx.fillText("GAME OVER", canvas.width / 2, canvas.height * 0.15);
+
+    ctx.font = fonts.extraSmall
+    ctx.fillText("YOUR SCORE: " + player.score, canvas.width / 2, canvas.height * 0.25);
+    ctx.fillText("PRESS ENTER TO CONTINUE", canvas.width / 2, canvas.height * 0.85);
 
     if (!scoreSaved) {
         saveScore()
@@ -178,7 +200,7 @@ function displayHighscores() {
     let name = "N/A"
     let usedEntries = []
 
-    ctx.font = "15px Comic Sans MS"
+    ctx.font = fonts.extraSmall
 
     top5.forEach((score, index) => {
         let keys = Object.keys(highscores)
@@ -192,7 +214,8 @@ function displayHighscores() {
             }
         }
         let text = `#${index + 1}      ${name} : ${score}`
-        ctx.fillText(text, canvas.width / 2, (canvas.height / 3) + (50 * (index + 1)))
+        //ctx.fillText(text, canvas.width / 2, (canvas.height / 3) + (50 * (index + 1)))
+        ctx.fillText(text, canvas.width / 2, canvas.height * (0.35 + (index / 10)))
     })
 }
 
@@ -204,6 +227,11 @@ function saveScore() {
         highscores = {}
     }
     let name = prompt('Please enter your name', '')
+
+    if (name == "") {
+        console.log('no name')
+        return
+    }
 
     if (player.score > (highscores[name] == null ? 0 : highscores[name])) {
         highscores[name] = player.score
