@@ -18,15 +18,6 @@ function spawnEnemies() {
     }
 }
 
-// function spawnEnemies() {
-//     let interval = 5000
-//     const timer = () => {
-//         spawnWave()
-//         setTimeout(timer, interval)
-//     }
-//     timer()
-// }
-
 function randColour() {
     const r = Math.random() * (255 - 30) + 30
     const g = Math.random() * (255 - 30) + 30

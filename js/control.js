@@ -8,7 +8,6 @@ function enterHandler() {
     if (startingScreen) {
         startingScreen = false;
         mainGamePlayScreen = true;
-        //spawnEnemies();
         spawnCollectables()
         spawnFuel()
     }

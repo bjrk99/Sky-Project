@@ -2,8 +2,6 @@ class Player {
     constructor(){
         this.x = innerWidth / 2;
         this.y = innerHeight - 100;
-        // this.x = canvas.width / 2;
-        // this.y = canvas.height - 100;
         this.width = 20;
         this.height = 20;
         this.score = 0;

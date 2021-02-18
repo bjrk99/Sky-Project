@@ -191,12 +191,6 @@ function getInstructions () {
 // display end of the game function
 function displayGameOver(){
     ctx.font = fonts.medium;
-    // if (player.fuel > 0){
-    //     ctx.fillText("YOU CRASHED! - GAME OVER", canvas.width / 2, canvas.height * 0.15);
-    // }
-    // else {
-    //     ctx.fillText("YOU RAN OUT OF FUEL! - GAME OVER", canvas.width / 2, canvas.height * 0.15);
-    // }
     ctx.fillText("GAME OVER", canvas.width / 2, canvas.height * 0.15);
 
     ctx.font = fonts.extraSmall
@@ -230,7 +224,6 @@ function displayHighscores() {
             }
         }
         let text = `#${index + 1}      ${name} : ${score}`
-        //ctx.fillText(text, canvas.width / 2, (canvas.height / 3) + (50 * (index + 1)))
         ctx.fillText(text, canvas.width / 2, canvas.height * (0.35 + (index / 10)))
     })
 }
