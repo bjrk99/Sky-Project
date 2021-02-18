@@ -9,6 +9,7 @@ class Player {
         this.score = 0;
         this.fuel = 2000
         this.ammo = 3
+        this.collCount = 0
 
         console.log(innerHeight, innerWidth)
         this.widthSpeedFactor = innerWidth / 140
@@ -114,6 +115,13 @@ class Player {
         const proj = new Projectile(mid.x, mid.y, 3, velocity)
         projectiles.push(proj)
         this.ammo--
+    }
+
+    earnFuel() {
+        if (++this.collCount == 3) {
+            this.collCount = 0
+            this.ammo++
+        }
     }
 }
 

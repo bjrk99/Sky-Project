@@ -94,6 +94,7 @@ function animate(){
                 setTimeout(() => {
                     collectables.splice(index, 1)
                     player.addScoreForCollectable()
+                    player.earnFuel()
                 }, 0)
             }
         })
