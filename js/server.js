@@ -14,7 +14,7 @@ const turnOffServer = async () => {
               }
             })
 
-            document.querySelector("h1").innerText = "Server is down";
+            document.querySelector("h1").innerText = "Server is Down";
 
     } catch (err) {
         console.log("JSON-SERVER IS NOT WATCHING DB.JSON FILE");
@@ -36,7 +36,7 @@ const turnOnServer = async () => {
               }
         })
     
-        document.querySelector("h1").innerText = "Server is up and running";
+        document.querySelector("h1").innerText = "Server is Up and Running";
 
     } catch (err) {
         console.log("JSON-SERVER IS NOT WATCHING DB.JSON FILE");

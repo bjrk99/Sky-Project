@@ -11,7 +11,6 @@ class Player {
         this.ammo = 3
         this.collCount = 0
 
-        console.log(innerHeight, innerWidth)
         this.widthSpeedFactor = innerWidth / 140
         this.heightSpeedFactor = innerHeight / 80
     }

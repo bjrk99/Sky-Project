@@ -34,7 +34,7 @@ class Fuel {
             x: Math.random() * (innerWidth - 100) + 50,
             y: 0 - this.height - (Math.random() * 250)
         }
-        console.log(sp)
+        
         return sp
     }
 }
