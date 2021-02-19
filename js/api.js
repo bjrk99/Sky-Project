@@ -1,27 +1,3 @@
-window.addEventListener("offline", (event) => {
-    loadGamePage();
-  });
-
-  window.addEventListener("online", (event) => {
-    loadHoldingPage();
-  });
-  
-  function loadHoldingPage(){
-    if (document.title == "Game"){
-      startingScreen = false;
-      mainGamePlayScreen = false;
-      gameOverScreen = false;
-      window.location.href = ("holdingPage.html");
-  }
-}
-
-function loadGamePage(){
-  if (document.title == "Back Online"){
-      startingScreen = true;
-      window.location.href = ("index.html");
-  }
-}
-
   // method gets online status
   const getOnlineStatus = async () => {
       
